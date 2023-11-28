@@ -13,12 +13,4 @@ public class TopDownCameraController : CameraController
     {
         return Vector3.forward;
     }
-
-    void Start() {
-        Debug.Log("Top down!");
-    }
-
-    void Update() {
-        
-    }
 }

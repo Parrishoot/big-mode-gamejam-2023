@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_Grid
+  m_Name: GridMaterial
   m_Shader: {fileID: -6465566751694194690, guid: 7830704d7ebcad94a9b3c7395af015ff,
     type: 3}
   m_Parent: {fileID: 0}
