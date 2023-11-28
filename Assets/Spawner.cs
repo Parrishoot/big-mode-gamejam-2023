@@ -14,6 +14,7 @@ public class Spawner : MonoBehaviour
 
     public GameObject Spawn(bool parented=false, bool randomWithinBounds=true) {
         Vector3 randomSpawnLocation = randomWithinBounds ? GetRandomSpawnLocationWithinBounds() : transform.position;
+        Debug.Log(randomSpawnLocation);
         return Instantiate(spawnObject, randomSpawnLocation, Quaternion.identity, parented ? transform : null);
     }
 

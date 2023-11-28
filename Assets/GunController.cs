@@ -4,5 +4,23 @@ using UnityEngine;
 
 public class GunController : MonoBehaviour
 {
-    Spawner spawner;
+    [SerializeField]
+    private float reloadTime = .3f;
+
+    [SerializeField]
+    private Spawner spawner;
+
+    private Timer reloadTimer;
+
+    public void Fire() {
+        if(reloadTimer == null || reloadTimer.IsFinished()) {
+            GameObject bulletObject = spawner.Spawn();
+            bulletObject.GetComponent<BulletController>().Shoot(CameraPerspectiveSwapper.Instance.GetCurrentCameraController().GetShootVector());
+            reloadTimer = new Timer(reloadTime);
+        }
+    }
+
+    void Update() {
+        reloadTimer?.DecreaseTime(Time.deltaTime);
+    }
 }

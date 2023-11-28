@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerInputController : MonoBehaviour
@@ -8,10 +9,14 @@ public class PlayerInputController : MonoBehaviour
     [SerializeField]
     private CharacterMovementController characterMovementController;
 
+    [SerializeField]
+    private GunController gunController;
+
     // Update is called once per frame
     void Update()
     {
         CheckMovement();
+        CheckShoot();
     }
 
     private void CheckMovement() {        
@@ -26,5 +31,12 @@ public class PlayerInputController : MonoBehaviour
         movementVector += yMovement * currentCameraController.GetVecticalMovementVector();
 
         characterMovementController.Move(movementVector);
+    }
+
+    private void CheckShoot() {
+        if(Input.GetMouseButtonDown(0)) {
+            Debug.Log("Fire!");
+            gunController.Fire();
+        }
     }
 }

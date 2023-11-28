@@ -9,6 +9,6 @@ public abstract class CameraController : MonoBehaviour
     public abstract Vector3 GetVecticalMovementVector();
 
     public Vector3 GetShootVector() {
-        return Vector3.forward;
+        return transform.forward;
     }
 }
