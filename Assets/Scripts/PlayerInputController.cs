@@ -10,6 +10,9 @@ public class PlayerInputController : MonoBehaviour
     private CharacterMovementController characterMovementController;
 
     [SerializeField]
+    private PlayerGunManager playerGunManager;
+
+    [SerializeField]
     private GunController gunController;
 
     // Update is called once per frame
@@ -35,8 +38,7 @@ public class PlayerInputController : MonoBehaviour
 
     private void CheckShoot() {
         if(Input.GetMouseButtonDown(0)) {
-            Debug.Log("Fire!");
-            gunController.Fire();
+            playerGunManager.GetCurrentGunController().Fire();
         }
     }
 }

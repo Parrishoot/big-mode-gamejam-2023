@@ -20,7 +20,11 @@ public class GunController : MonoBehaviour
         }
     }
 
-    void Update() {
+    public virtual void Reset() {
+        enabled = true;
+    }
+
+    protected virtual void Update() {
         reloadTimer?.DecreaseTime(Time.deltaTime);
     }
 }

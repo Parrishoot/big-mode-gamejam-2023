@@ -23,11 +23,16 @@ public class CameraPerspectiveSwapper : Singleton<CameraPerspectiveSwapper>
         [field: SerializeReference]
         public CameraController CameraController { get; set; }
 
-        public PerspectiveAnchor(PerspectiveMode perspectiveMode, Transform transform, CameraController cameraController)
+        [field: SerializeReference]
+        public bool Orthographic { get; set; }
+
+        public PerspectiveAnchor(PerspectiveMode perspectiveMode, Transform transform, CameraController cameraController, bool orthographic)
         {
-            this.PerspectiveMode = perspectiveMode;
-            this.Transform = transform;
-            this.CameraController = cameraController;
+            PerspectiveMode = perspectiveMode;
+            Transform = transform;
+            CameraController = cameraController;
+            Orthographic = orthographic;
+
         }
     }
 
@@ -42,6 +47,10 @@ public class CameraPerspectiveSwapper : Singleton<CameraPerspectiveSwapper>
     private Sequence activeSequence;
 
     private CameraController currentCameraController;
+
+    public delegate void OnPerspectiveSwitch(PerspectiveMode perspectiveMode);
+
+    private OnPerspectiveSwitch onPerspectiveSwitch;
 
     void Start() {
         HardSetPerspective(startingPerspective);
@@ -64,8 +73,8 @@ public class CameraPerspectiveSwapper : Singleton<CameraPerspectiveSwapper>
         transform.position = anchor.Transform.position;
         transform.rotation = anchor.Transform.rotation;
 
-        currentPerspectiveIndex = perspectiveAnchors.IndexOf(anchor);
-        currentCameraController = anchor.CameraController;
+        UpdateControllerValues(anchor);
+
         currentCameraController.enabled = true;
     }
 
@@ -94,13 +103,18 @@ public class CameraPerspectiveSwapper : Singleton<CameraPerspectiveSwapper>
 
         activeSequence = DOTween.Sequence();
         activeSequence.Append(transform.DOLocalMove(nextPerspectiveAnchor.Transform.localPosition, perspectiveTransitionTime).SetEase(Ease.InOutCubic));
-        activeSequence.Append(transform.DORotate(nextPerspectiveAnchor.Transform.rotation.eulerAngles, perspectiveTransitionTime).SetEase(Ease.InOutCubic));
+        activeSequence.Join(transform.DORotate(nextPerspectiveAnchor.Transform.rotation.eulerAngles, perspectiveTransitionTime).SetEase(Ease.InOutCubic));
         activeSequence.Play().OnComplete(() => {
             currentCameraController.enabled = true;
         });
 
-        currentPerspectiveIndex = perspectiveAnchors.IndexOf(nextPerspectiveAnchor);
-        currentCameraController = nextPerspectiveAnchor.CameraController;
+        UpdateControllerValues(nextPerspectiveAnchor);
+    }
+
+    private void UpdateControllerValues(PerspectiveAnchor anchor) {
+        currentPerspectiveIndex = perspectiveAnchors.IndexOf(anchor);
+        currentCameraController = anchor.CameraController;
+        onPerspectiveSwitch?.Invoke(anchor.PerspectiveMode);
     }
 
     private PerspectiveAnchor GetAnchorForPerspective(PerspectiveMode perspectiveMode) {
@@ -109,5 +123,13 @@ public class CameraPerspectiveSwapper : Singleton<CameraPerspectiveSwapper>
 
     public CameraController GetCurrentCameraController() {
         return currentCameraController;
+    }
+
+    public void AddOnPerspectiveSwitchEvent(OnPerspectiveSwitch onPerspectiveSwitchEvent) {
+        onPerspectiveSwitch += onPerspectiveSwitchEvent;
+    }
+
+    public void RemoveOnPerspectiveSwitchEvent(OnPerspectiveSwitch onPerspectiveSwitchEvent) {
+        onPerspectiveSwitch -= onPerspectiveSwitchEvent;
     }
 }
