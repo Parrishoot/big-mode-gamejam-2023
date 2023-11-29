@@ -14,18 +14,18 @@ public class PlayerGunManager : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         CameraPerspectiveSwapper.Instance.AddOnPerspectiveSwitchEvent(SwapGuns);
     }
 
-    public void SwapGuns(PerspectiveMode perspectiveMode) {
+    public void SwapGuns(PerspectiveMode fromPerspectiveMode, PerspectiveMode toPerspectiveMode) {
 
         if(currentGunController != null) {
             currentGunController.enabled = false;
         }
 
-        currentGunController = perspectiveMode == PerspectiveMode.TOP_DOWN ? topDownGunController : fpsGunController;
+        currentGunController = toPerspectiveMode == PerspectiveMode.TOP_DOWN ? topDownGunController : fpsGunController;
         currentGunController.Reset();
     }
 

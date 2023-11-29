@@ -54,9 +54,11 @@ public class CameraPerspectiveSwapper : Singleton<CameraPerspectiveSwapper>
 
     private CameraController currentCameraController;
 
-    public delegate void OnPerspectiveSwitch(PerspectiveMode perspectiveMode);
+    public delegate void PerspectiveSwitchEvent(PerspectiveMode fromPerspectiveMode, PerspectiveMode toPerspectiveMode);
 
-    private OnPerspectiveSwitch onPerspectiveSwitch;
+    private PerspectiveSwitchEvent onPerspectiveTransitionBegin;
+
+    private PerspectiveSwitchEvent onPerspectiveSwitched;
 
     void Start() {
         HardSetPerspective(startingPerspective);
@@ -83,6 +85,8 @@ public class CameraPerspectiveSwapper : Singleton<CameraPerspectiveSwapper>
 
         currentCameraController.enabled = true;
         cameraFollower.SetFollow(anchor.Transform, anchor.SmoothFollowAnchor);
+
+        onPerspectiveSwitched?.Invoke(nextPerspective == PerspectiveMode.TOP_DOWN ? PerspectiveMode.FPS : PerspectiveMode.TOP_DOWN, nextPerspective);
     }
 
     public void SwapPerspectives() {
@@ -108,17 +112,25 @@ public class CameraPerspectiveSwapper : Singleton<CameraPerspectiveSwapper>
             currentCameraController.enabled = false;
         }
 
+        PerspectiveMode currentPerspectiveMode = perspectiveAnchors[currentPerspectiveIndex].PerspectiveMode;
+        PerspectiveMode nextPerspectiveMode = nextPerspectiveAnchor.PerspectiveMode;
+
         playerMovementController.enabled = false;
         cameraFollower.enabled = false;
+
+        onPerspectiveTransitionBegin?.Invoke(currentPerspectiveMode, nextPerspectiveMode);
 
         activeSequence = DOTween.Sequence();
         activeSequence.Append(transform.DOMove(nextPerspectiveAnchor.Transform.position, perspectiveTransitionTime).SetEase(Ease.InOutCubic));
         activeSequence.Append(transform.DORotate(nextPerspectiveAnchor.Transform.rotation.eulerAngles, perspectiveTransitionTime).SetEase(Ease.InOutCubic));
         activeSequence.Play().OnComplete(() => {
+            
             currentCameraController.enabled = true;
             cameraFollower.enabled = true;
             cameraFollower.SetFollow(nextPerspectiveAnchor.Transform, nextPerspectiveAnchor.SmoothFollowAnchor);
             playerMovementController.enabled = true;
+
+            onPerspectiveSwitched?.Invoke(currentPerspectiveMode, nextPerspectiveMode);
         });
 
         UpdateControllerValues(nextPerspectiveAnchor);
@@ -127,7 +139,6 @@ public class CameraPerspectiveSwapper : Singleton<CameraPerspectiveSwapper>
     private void UpdateControllerValues(PerspectiveAnchor anchor) {
         currentPerspectiveIndex = perspectiveAnchors.IndexOf(anchor);
         currentCameraController = anchor.CameraController;
-        onPerspectiveSwitch?.Invoke(anchor.PerspectiveMode);
     }
 
     private PerspectiveAnchor GetAnchorForPerspective(PerspectiveMode perspectiveMode) {
@@ -138,12 +149,20 @@ public class CameraPerspectiveSwapper : Singleton<CameraPerspectiveSwapper>
         return currentCameraController;
     }
 
-    public void AddOnPerspectiveSwitchEvent(OnPerspectiveSwitch onPerspectiveSwitchEvent) {
-        onPerspectiveSwitch += onPerspectiveSwitchEvent;
+    public void AddOnPerspectiveSwitchEvent(PerspectiveSwitchEvent onPerspectiveSwitchEvent) {
+        onPerspectiveSwitched += onPerspectiveSwitchEvent;
     }
 
-    public void RemoveOnPerspectiveSwitchEvent(OnPerspectiveSwitch onPerspectiveSwitchEvent) {
-        onPerspectiveSwitch -= onPerspectiveSwitchEvent;
+    public void RemoveOnPerspectiveSwitchEvent(PerspectiveSwitchEvent onPerspectiveSwitchEvent) {
+        onPerspectiveSwitched -= onPerspectiveSwitchEvent;
+    }
+
+    public void AddOnPerspectiveTransitionBeginEvent(PerspectiveSwitchEvent onPerspectiveTransitionBeginEvent) {
+        onPerspectiveTransitionBegin += onPerspectiveTransitionBeginEvent;
+    }
+
+    public void RemoveOnPerspectiveTransitionBeginEvent(PerspectiveSwitchEvent onPerspectiveSwitchEvent) {
+        onPerspectiveTransitionBegin -= onPerspectiveSwitchEvent;
     }
 
     public float GetAnimationTime() {

@@ -13,19 +13,31 @@ public class GenericPerspectiveDependentControllerManager<T> : MonoBehaviour whe
     private T currentController;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         CameraPerspectiveSwapper.Instance.AddOnPerspectiveSwitchEvent(OnSwap);
+        CameraPerspectiveSwapper.Instance.AddOnPerspectiveTransitionBeginEvent(OnTransition);
     }
 
-    private void OnSwap(PerspectiveMode perspectiveMode) {
+    private void OnSwap(PerspectiveMode fromPerspectiveMode, PerspectiveMode toPerspectiveMode) {
+        currentController = toPerspectiveMode == PerspectiveMode.TOP_DOWN ? topDownController : fpsController;
+        currentController.enabled = true;
+    }
+
+    private void OnTransition(PerspectiveMode fromPerspectiveMode, PerspectiveMode toPerspectiveMode) {
+        
+        if(fromPerspectiveMode == PerspectiveMode.TOP_DOWN) {
+            topDownController.OnTransitionToEnd();
+            fpsController.OnTransitionToStart();
+        }
+        else {
+            topDownController.OnTransitionToStart();
+            fpsController.OnTransitionToEnd();
+        }
 
         if(currentController != null) {
             currentController.enabled = false;
         }
-
-        currentController = perspectiveMode == PerspectiveMode.TOP_DOWN ? topDownController : fpsController;
-        currentController.enabled = true;
     }
 
     public T GetCurrentController() {

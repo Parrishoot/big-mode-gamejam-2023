@@ -8,6 +8,10 @@ public abstract class PerspectiveDependentController : MonoBehaviour
 
     public abstract void OnPerspectiveEnd();
 
+    public abstract void OnTransitionToStart();
+
+    public abstract void OnTransitionToEnd();
+
     private void OnEnable() {
         OnPerspectiveStart();
     }
