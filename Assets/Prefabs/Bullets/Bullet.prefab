@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5476852938382133438}
   - component: {fileID: 3119453484560744640}
   - component: {fileID: 2934392809810956160}
+  - component: {fileID: 5631240735043639889}
   m_Layer: 6
   m_Name: Bullet
   m_TagString: Untagged
@@ -104,7 +105,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -164,3 +165,17 @@ MonoBehaviour:
   characterMovementController: {fileID: 3119453484560744640}
   direction: {x: 0, y: 0, z: 0}
   TTL: 3
+  hurtBox: {fileID: 5631240735043639889}
+--- !u!114 &5631240735043639889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4185207273138680395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f93e7e87d3fed834bbfadb6f68e60bd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Damage>k__BackingField: 10

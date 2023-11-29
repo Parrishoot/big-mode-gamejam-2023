@@ -17,6 +17,15 @@ public class BulletController : MonoBehaviour
     [SerializeField]
     private Timer timer;
 
+    [SerializeField]
+    private HurtBox hurtBox;
+
+    void Start() {
+        hurtBox.AddOnHurtBoxHitEvent(() => {
+            Destroy(gameObject);
+        });
+    }
+
     public void Shoot(Vector3 direction) {
         this.direction = direction;
         timer = new Timer(TTL);

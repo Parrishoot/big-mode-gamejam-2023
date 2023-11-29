@@ -11,12 +11,12 @@ TagManager:
   - 
   - Water
   - UI
-  - PlayerBullet
+  - PlayerHitBox
   - Player
-  - 
-  - 
-  - 
-  - 
+  - PlayerHurtBox
+  - EnemyHitBox
+  - Enemy
+  - EnemyHurtBox
   - 
   - 
   - 
