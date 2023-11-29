@@ -24,14 +24,14 @@ public class CameraPerspectiveSwapper : Singleton<CameraPerspectiveSwapper>
         public CameraController CameraController { get; set; }
 
         [field: SerializeReference]
-        public bool Orthographic { get; set; }
+        public bool SmoothFollowAnchor { get; set; }
 
-        public PerspectiveAnchor(PerspectiveMode perspectiveMode, Transform transform, CameraController cameraController, bool orthographic)
+        public PerspectiveAnchor(PerspectiveMode perspectiveMode, Transform transform, CameraController cameraController, bool smoothFollowAnchor)
         {
             PerspectiveMode = perspectiveMode;
             Transform = transform;
             CameraController = cameraController;
-            Orthographic = orthographic;
+            SmoothFollowAnchor = smoothFollowAnchor;
 
         }
     }
@@ -41,6 +41,12 @@ public class CameraPerspectiveSwapper : Singleton<CameraPerspectiveSwapper>
 
     [SerializeField]
     private PerspectiveMode startingPerspective;
+
+    [SerializeField]
+    private Follower cameraFollower;
+
+    [SerializeField]
+    private CharacterMovementController playerMovementController;
 
     private int currentPerspectiveIndex = 0;
 
@@ -76,6 +82,7 @@ public class CameraPerspectiveSwapper : Singleton<CameraPerspectiveSwapper>
         UpdateControllerValues(anchor);
 
         currentCameraController.enabled = true;
+        cameraFollower.SetFollow(anchor.Transform, anchor.SmoothFollowAnchor);
     }
 
     public void SwapPerspectives() {
@@ -101,11 +108,17 @@ public class CameraPerspectiveSwapper : Singleton<CameraPerspectiveSwapper>
             currentCameraController.enabled = false;
         }
 
+        playerMovementController.enabled = false;
+        cameraFollower.enabled = false;
+
         activeSequence = DOTween.Sequence();
-        activeSequence.Append(transform.DOLocalMove(nextPerspectiveAnchor.Transform.localPosition, perspectiveTransitionTime).SetEase(Ease.InOutCubic));
-        activeSequence.Join(transform.DORotate(nextPerspectiveAnchor.Transform.rotation.eulerAngles, perspectiveTransitionTime).SetEase(Ease.InOutCubic));
+        activeSequence.Append(transform.DOMove(nextPerspectiveAnchor.Transform.position, perspectiveTransitionTime).SetEase(Ease.InOutCubic));
+        activeSequence.Append(transform.DORotate(nextPerspectiveAnchor.Transform.rotation.eulerAngles, perspectiveTransitionTime).SetEase(Ease.InOutCubic));
         activeSequence.Play().OnComplete(() => {
             currentCameraController.enabled = true;
+            cameraFollower.enabled = true;
+            cameraFollower.SetFollow(nextPerspectiveAnchor.Transform, nextPerspectiveAnchor.SmoothFollowAnchor);
+            playerMovementController.enabled = true;
         });
 
         UpdateControllerValues(nextPerspectiveAnchor);

@@ -26,4 +26,8 @@ public class CharacterMovementController : MonoBehaviour
     void FixedUpdate() {
         rigidbody.velocity = movementVector * characterMovementSpeed * Time.fixedDeltaTime;
     }
+
+    public void OnDisable() {
+        rigidbody.velocity = Vector3.zero;
+    }
 }
