@@ -145,4 +145,8 @@ public class CameraPerspectiveSwapper : Singleton<CameraPerspectiveSwapper>
     public void RemoveOnPerspectiveSwitchEvent(OnPerspectiveSwitch onPerspectiveSwitchEvent) {
         onPerspectiveSwitch -= onPerspectiveSwitchEvent;
     }
+
+    public float GetAnimationTime() {
+        return perspectiveTransitionTime * 2;
+    }
 }

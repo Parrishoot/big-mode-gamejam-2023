@@ -20,8 +20,6 @@ public class PlayerGunManager : MonoBehaviour
     }
 
     public void SwapGuns(PerspectiveMode perspectiveMode) {
-        
-        Debug.Log("Swapping Gun");
 
         if(currentGunController != null) {
             currentGunController.enabled = false;

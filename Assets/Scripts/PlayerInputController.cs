@@ -43,7 +43,7 @@ public class PlayerInputController : MonoBehaviour
 
     private void CheckShoot() {
         if(Input.GetMouseButtonDown(0)) {
-            playerGunManager.GetCurrentGunController().Fire();
+            playerGunManager.GetCurrentGunController()?.Fire();
         }
     }
 }
