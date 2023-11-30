@@ -19,4 +19,8 @@ public abstract class PerspectiveDependentController : MonoBehaviour
     private void OnDisable() {
         OnPerspectiveEnd();
     }
+
+    protected float GetTransitionTime() {
+        return CameraPerspectiveSwapper.Instance.GetAnimationTime();
+    }
 }

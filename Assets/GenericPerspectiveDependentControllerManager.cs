@@ -43,4 +43,9 @@ public class GenericPerspectiveDependentControllerManager<T> : MonoBehaviour whe
     public T GetCurrentController() {
         return currentController;
     }
+
+    private void OnDestroy() {
+        CameraPerspectiveSwapper.Instance.RemoveOnPerspectiveSwitchEvent(OnSwap);
+        CameraPerspectiveSwapper.Instance.RemoveOnPerspectiveTransitionBeginEvent(OnTransition);
+    }
 }

@@ -13,12 +13,4 @@ public class TopDownCameraController : CameraController
     {
         return Vector3.forward;
     }
-
-    private void OnEnable() {
-        Camera.main.orthographic = true;
-    }
-
-    private void OnDisable() {
-        Camera.main.orthographic = false;
-    }
 }

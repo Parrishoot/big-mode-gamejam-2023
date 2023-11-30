@@ -48,6 +48,11 @@ public class CameraPerspectiveSwapper : Singleton<CameraPerspectiveSwapper>
     [SerializeField]
     private CharacterMovementController playerMovementController;
 
+    [SerializeField]
+    private MatrixBlender matrixBlender;
+
+    private CameraTweener cameraTweener;
+
     private int currentPerspectiveIndex = 0;
 
     private Sequence activeSequence;
@@ -61,6 +66,7 @@ public class CameraPerspectiveSwapper : Singleton<CameraPerspectiveSwapper>
     private PerspectiveSwitchEvent onPerspectiveSwitched;
 
     void Start() {
+        cameraTweener = new CameraTweener(matrixBlender);
         HardSetPerspective(startingPerspective);
     }
 
@@ -82,6 +88,8 @@ public class CameraPerspectiveSwapper : Singleton<CameraPerspectiveSwapper>
         transform.rotation = anchor.Transform.rotation;
 
         UpdateControllerValues(anchor);
+
+        cameraTweener.TweenToPerspectiveMode(anchor.PerspectiveMode, 0f);
 
         currentCameraController.enabled = true;
         cameraFollower.SetFollow(anchor.Transform, anchor.SmoothFollowAnchor);
@@ -119,6 +127,8 @@ public class CameraPerspectiveSwapper : Singleton<CameraPerspectiveSwapper>
         cameraFollower.enabled = false;
 
         onPerspectiveTransitionBegin?.Invoke(currentPerspectiveMode, nextPerspectiveMode);
+
+        cameraTweener.TweenToPerspectiveMode(nextPerspectiveMode, GetAnimationTime());
 
         activeSequence = DOTween.Sequence();
         activeSequence.Append(transform.DOMove(nextPerspectiveAnchor.Transform.position, perspectiveTransitionTime).SetEase(Ease.InOutCubic));

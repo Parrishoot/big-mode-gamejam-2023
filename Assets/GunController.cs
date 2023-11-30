@@ -16,6 +16,7 @@ public class GunController : MonoBehaviour
         if(reloadTimer == null || reloadTimer.IsFinished()) {
             GameObject bulletObject = spawner.Spawn();
             bulletObject.GetComponent<BulletController>().Shoot(CameraPerspectiveSwapper.Instance.GetCurrentCameraController().GetShootVector());
+            CameraPerspectiveSwapper.Instance.GetCurrentCameraController().GetShaker().Shake(time:.2f, strength:.2f, vibrato:50);
             reloadTimer = new Timer(reloadTime);
         }
     }
