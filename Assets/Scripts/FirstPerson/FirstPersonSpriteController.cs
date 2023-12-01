@@ -23,7 +23,7 @@ public class FirstPersonSpriteController : PerspectiveDependentController
     public override void OnTransitionToStart()
     {
         GameObject playerGameObject = GameObject.FindGameObjectWithTag("Player");
-        transform.DORotate(playerGameObject.transform.position, GetTransitionTime() - (GetTransitionTime() * .1f)).SetEase(Ease.InOutCubic);
+        transform.DOLookAt(playerGameObject.transform.position, GetTransitionTime() - (GetTransitionTime() * .1f)).SetEase(Ease.InOutCubic);
     }
 
     void LateUpdate() {

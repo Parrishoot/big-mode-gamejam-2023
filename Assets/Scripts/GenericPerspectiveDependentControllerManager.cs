@@ -17,11 +17,18 @@ public class GenericPerspectiveDependentControllerManager<T> : MonoBehaviour whe
     {
         CameraPerspectiveSwapper.Instance.AddOnPerspectiveSwitchEvent(OnSwap);
         CameraPerspectiveSwapper.Instance.AddOnPerspectiveTransitionBeginEvent(OnTransition);
+
+        topDownController.enabled = false;
+        fpsController.enabled = false;
     }
 
+    void Start() {
+        SetControllerForPerspectiveActive(CameraPerspectiveSwapper.Instance.GetCurrentPerspectiveMode());
+    }
+
+
     private void OnSwap(PerspectiveMode fromPerspectiveMode, PerspectiveMode toPerspectiveMode) {
-        currentController = toPerspectiveMode == PerspectiveMode.TOP_DOWN ? topDownController : fpsController;
-        currentController.enabled = true;
+        SetControllerForPerspectiveActive(toPerspectiveMode);
     }
 
     private void OnTransition(PerspectiveMode fromPerspectiveMode, PerspectiveMode toPerspectiveMode) {
@@ -40,6 +47,11 @@ public class GenericPerspectiveDependentControllerManager<T> : MonoBehaviour whe
         }
     }
 
+    public void SetControllerForPerspectiveActive(PerspectiveMode perspectiveMode) {
+        currentController = GetControllerForPerspective(perspectiveMode);
+        currentController.enabled = true;
+    }
+
     public T GetCurrentController() {
         return currentController;
     }
@@ -47,5 +59,9 @@ public class GenericPerspectiveDependentControllerManager<T> : MonoBehaviour whe
     private void OnDestroy() {
         CameraPerspectiveSwapper.Instance.RemoveOnPerspectiveSwitchEvent(OnSwap);
         CameraPerspectiveSwapper.Instance.RemoveOnPerspectiveTransitionBeginEvent(OnTransition);
+    }
+
+    protected T GetControllerForPerspective(PerspectiveMode perspectiveMode) {
+        return perspectiveMode == PerspectiveMode.TOP_DOWN ? topDownController : fpsController;
     }
 }

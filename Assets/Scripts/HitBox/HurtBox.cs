@@ -11,6 +11,12 @@ public class HurtBox : MonoBehaviour
         onHurtBoxHitEvent += newOnHurtBoxHitEvent;
     }
 
+    private void OnCollisionEnter(Collision other) {
+        if(other.gameObject.GetComponent<HitBox>() == null) {
+            onHurtBoxHitEvent?.Invoke();
+        }
+    }
+
     public void Process() {
         onHurtBoxHitEvent?.Invoke();
     }

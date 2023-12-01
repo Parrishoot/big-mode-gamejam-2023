@@ -12,7 +12,7 @@ public class TopDownSpriteController : PerspectiveDependentController
 
     public override void OnPerspectiveStart()
     {
-        
+        transform.eulerAngles = Vector3.right * 90;
     }
 
     public override void OnTransitionToEnd()

@@ -12,9 +12,6 @@ public class PlayerInputController : MonoBehaviour
     [SerializeField]
     private PlayerGunManager playerGunManager;
 
-    [SerializeField]
-    private GunController gunController;
-
     void Start() {
         Cursor.lockState = CursorLockMode.Locked;
     }

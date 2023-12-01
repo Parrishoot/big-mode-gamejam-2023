@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TopDownGunController : GunController
+public class TopDownGunController : PlayerGunController
 {
     [SerializeField]
     private Vector2 mouseSensitivity = new Vector2(2f, 2F);

@@ -178,4 +178,8 @@ public class CameraPerspectiveSwapper : Singleton<CameraPerspectiveSwapper>
     public float GetAnimationTime() {
         return perspectiveTransitionTime * 2;
     }
+
+    public PerspectiveMode GetCurrentPerspectiveMode() {
+        return perspectiveAnchors[currentPerspectiveIndex].PerspectiveMode;
+    }
 }

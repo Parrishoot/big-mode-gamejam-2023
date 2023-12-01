@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &5640060616387567008
+--- !u!1001 &2455563839374733576
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,20 +8,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 691935728267919861, guid: 83d5eec9fbac29343aadbce49c3c1ba7,
+    - target: {fileID: 3119453484560744640, guid: 83d5eec9fbac29343aadbce49c3c1ba7,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 00a37d59ff7c3a84ca0a24084ac8fe16, type: 2}
+      propertyPath: characterMovementSpeed
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 4185207273138680395, guid: 83d5eec9fbac29343aadbce49c3c1ba7,
         type: 3}
       propertyPath: m_Name
-      value: TopDownBullet
+      value: EnemyBullet
       objectReference: {fileID: 0}
     - target: {fileID: 4185207273138680395, guid: 83d5eec9fbac29343aadbce49c3c1ba7,
         type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 5509594158411280815, guid: 83d5eec9fbac29343aadbce49c3c1ba7,
         type: 3}
@@ -73,10 +73,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6965669300827097421, guid: 83d5eec9fbac29343aadbce49c3c1ba7,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: de4f90def097aac4fa0f68b3b890ffb5,
+        type: 3}
     - target: {fileID: 7075471745705998615, guid: 83d5eec9fbac29343aadbce49c3c1ba7,
         type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
