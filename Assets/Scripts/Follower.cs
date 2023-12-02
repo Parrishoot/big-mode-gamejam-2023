@@ -13,22 +13,46 @@ public class Follower : MonoBehaviour
     [SerializeField]
     private float followSpeed = 10f;
 
+    [SerializeField]
+    private bool maintainOffset = false;
+
+    private Vector3 offset;
+
+    void Awake() {
+        if(followTransform != null) {
+            SetFollow(followTransform);
+        }
+    }
+
     public void SetFollow(Transform newFollowTransform, bool smoothFollow=true) {
-        transform.position = newFollowTransform.position;
+
+        Vector3 targetPosition = newFollowTransform.position;
+        offset = Vector3.zero;
+
+        if(maintainOffset) {
+            offset = newFollowTransform.position - transform.position;
+            targetPosition = offset;
+        }
+
+        transform.position = targetPosition;
         this.followTransform = newFollowTransform;
         this.smoothFollow = smoothFollow;
     }
 
     void Update() {
 
-        if(smoothFollow) {
-            float xDist = (followTransform.position.x - transform.position.x) / (1/followSpeed) * Time.deltaTime;
-            float zDist = (followTransform.position.z - transform.position.z) / (1/followSpeed) * Time.deltaTime;
 
-            transform.Translate(xDist, zDist, 0);
+        Vector3 targetPosition = followTransform.position - offset;
+
+        if(smoothFollow) {
+            float xDist = (targetPosition.x - transform.position.x) / (1/followSpeed) * Time.deltaTime;
+            float yDist = (targetPosition.y - transform.position.y) / (1/followSpeed) * Time.deltaTime;
+            float zDist = (targetPosition.z - transform.position.z) / (1/followSpeed) * Time.deltaTime;
+
+            transform.Translate(xDist, yDist, zDist, Space.World);
         }
         else {
-            transform.position = followTransform.position;
+            transform.position = targetPosition;
         }
     }
 }

@@ -12,7 +12,7 @@ public abstract class GunController : MonoBehaviour
 
     private Timer reloadTimer;
 
-    protected delegate void OnShotFiredEvent();
+    public delegate void OnShotFiredEvent();
 
     protected OnShotFiredEvent onShotFiredEvent;
 
@@ -38,11 +38,15 @@ public abstract class GunController : MonoBehaviour
 
     protected abstract Vector3 GetShootingVector();
 
-    protected void AddOnShotFiredEvent(OnShotFiredEvent newOnShotFiredEvent) {
+    public void AddOnShotFiredEvent(OnShotFiredEvent newOnShotFiredEvent) {
         onShotFiredEvent += newOnShotFiredEvent;
     }
 
-    protected void RemoveOnShotFiredEvent(OnShotFiredEvent newOnShotFiredEvent) {
+    public void RemoveOnShotFiredEvent(OnShotFiredEvent newOnShotFiredEvent) {
         onShotFiredEvent -= newOnShotFiredEvent;
+    }
+
+    public float GetReloadTime() {
+        return reloadTime;
     }
 }

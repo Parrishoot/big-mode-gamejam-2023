@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -21,9 +22,14 @@ public class Spawner : MonoBehaviour
 
         Vector3 basePosition = transform.position;
 
-        return new Vector3(Random.Range(basePosition.x - bounds.x, basePosition.x + bounds.x),
-                           Random.Range(basePosition.y - bounds.y, basePosition.y + bounds.y),
-                           Random.Range(basePosition.z - bounds.z, basePosition.z + bounds.z));
+        return new Vector3(Random.Range(basePosition.x - (bounds.x / 2), basePosition.x + (bounds.x / 2)),
+                           Random.Range(basePosition.y - (bounds.y / 2), basePosition.y + (bounds.y / 2)),
+                           Random.Range(basePosition.z - (bounds.z / 2), basePosition.z + (bounds.z / 2)));
 
+    }
+
+    private void OnDrawGizmosSelected() {
+        Gizmos.color = new Color(1, 0, 0, 0.5f);
+        Gizmos.DrawCube(transform.position, bounds + Vector3.one * .00001f);  
     }
 }

@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: InvisibleAutoTileMaterial
+  m_Name: WallMat
   m_Shader: {fileID: -6465566751694194690, guid: 9fd62d46fe4375f459258d12f97e4421,
     type: 3}
   m_Parent: {fileID: 0}
@@ -37,6 +37,14 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _Side1Texture:
+        m_Texture: {fileID: 2800000, guid: 5fe476d08dae59f43888cb46c893313e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Side2Texture:
+        m_Texture: {fileID: 2800000, guid: 5fe476d08dae59f43888cb46c893313e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SideTexture:
         m_Texture: {fileID: 2800000, guid: 5fe476d08dae59f43888cb46c893313e, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -62,7 +70,8 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Scale: 0.25
-    - _TextureTop: 0
+    - _TextureTop: 1
+    - _WorldPos: 1
     m_Colors:
     - _TopColor: {r: 0.12941176, g: 0.094117604, b: 0.10588237, a: 0}
   m_BuildTextureStacks: []

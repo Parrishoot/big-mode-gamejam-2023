@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthController : MonoBehaviour
+public class HealthController : BasicEventTrigger
 {
 
     [SerializeField]
@@ -21,7 +21,12 @@ public class HealthController : MonoBehaviour
         totalHealth -= damage;
 
         if(totalHealth <= 0) {
-            Destroy(gameObject);
+            Death();
         }
+    }
+
+    private void Death() {
+        TriggerEvent();
+        Destroy(gameObject);
     }
 }

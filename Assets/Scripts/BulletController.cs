@@ -32,10 +32,10 @@ public class BulletController : MonoBehaviour
         timer.AddOnTimerFinishedEvent(() => {
             Destroy(gameObject);
         });
+        characterMovementController.Move(direction);
     }
 
     public void Update() {
-        characterMovementController.Move(direction);
         timer.DecreaseTime(Time.deltaTime);
     }
 }

@@ -26,13 +26,13 @@ public class PlayerFirstPersonSpriteController : PerspectiveDependentController
 
     public override void OnTransitionToEnd()
     {
-        spriteRenderer.material.DOFade(1f, GetTransitionTime()).SetEase(Ease.InOutCubic);
+        //spriteRenderer.material.DOFade(1f, GetTransitionTime()).SetEase(Ease.InOutCubic);
         transform.DOScale(startingScale, GetTransitionTime()).SetEase(Ease.InOutCubic);
     }
 
     public override void OnTransitionToStart()
     {
-        spriteRenderer.material.DOFade(0f, GetTransitionTime()).SetEase(Ease.InOutCubic);
+        //spriteRenderer.material.DOFade(0f, GetTransitionTime()).SetEase(Ease.InOutCubic);
         transform.DOScale(Vector3.zero, GetTransitionTime()).SetEase(Ease.InOutCubic);
     }
 }

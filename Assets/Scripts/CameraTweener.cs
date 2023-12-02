@@ -7,9 +7,9 @@
         private Matrix4x4   ortho,
                             perspective;
         public float        fov     = 90f,
-                            near    = .3f,
+                            near    = .01f,
                             far     = 1000f,
-                            orthographicSize = 15f;
+                            orthographicSize = 20f;
         private float       aspect;
 
         private MatrixBlender matrixBlender;
