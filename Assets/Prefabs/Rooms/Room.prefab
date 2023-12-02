@@ -259,6 +259,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: {fileID: 6868154876651745195}
+  neighborLayerMask:
+    serializedVersion: 2
+    m_Bits: 4096
 --- !u!1 &1190101748766885898
 GameObject:
   m_ObjectHideFlags: 0
@@ -946,6 +949,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: {fileID: 6868154876651745195}
+  neighborLayerMask:
+    serializedVersion: 2
+    m_Bits: 4096
 --- !u!1 &4068027204136778746
 GameObject:
   m_ObjectHideFlags: 0
@@ -1065,6 +1071,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: {fileID: 6868154876651745195}
+  neighborLayerMask:
+    serializedVersion: 2
+    m_Bits: 4096
 --- !u!1 &5054402842909547792
 GameObject:
   m_ObjectHideFlags: 0
@@ -1441,7 +1450,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 0, z: 5}
+  m_LocalScale: {x: 6, y: 0, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6034379142238861561}
@@ -1847,6 +1856,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventTrigger: {fileID: 6868154876651745195}
+  neighborLayerMask:
+    serializedVersion: 2
+    m_Bits: 4096
 --- !u!1 &7451446639948709242
 GameObject:
   m_ObjectHideFlags: 0
