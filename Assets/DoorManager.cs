@@ -9,6 +9,10 @@ public class DoorManager : ParameterizedEventIngester<RoomManager.RoomEvent>
 
     private DoorManager neighbor;
 
+    public void SetRoomManager(RoomManager roomManager) {
+        eventTrigger = roomManager;
+    }
+
     protected override void Awake()
     {
         base.Awake();

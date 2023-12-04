@@ -4,10 +4,12 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+[System.Serializable]
 public class Spawner : MonoBehaviour
 {
 
     [SerializeField]
+    
     private Vector3 bounds = Vector3.zero;
 
     [SerializeField]
@@ -31,5 +33,9 @@ public class Spawner : MonoBehaviour
     private void OnDrawGizmosSelected() {
         Gizmos.color = new Color(1, 0, 0, 0.5f);
         Gizmos.DrawCube(transform.position, bounds + Vector3.one * .00001f);  
+    }
+
+    public void SetBounds(Vector3 newBounds) {
+        bounds = newBounds;
     }
 }
