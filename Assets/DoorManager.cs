@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class DoorManager : ParameterizedEventIngester<RoomManager.RoomEvent>
@@ -7,11 +8,15 @@ public class DoorManager : ParameterizedEventIngester<RoomManager.RoomEvent>
     [SerializeField]
     private LayerMask neighborLayerMask;
 
+    private float doorAnimationTime = .3f;
+
     private DoorManager neighbor;
 
     public void SetRoomManager(RoomManager roomManager) {
         eventTrigger = roomManager;
     }
+
+    private bool closed = true;
 
     protected override void Awake()
     {
@@ -26,7 +31,7 @@ public class DoorManager : ParameterizedEventIngester<RoomManager.RoomEvent>
     private void FindNeighbor() {
         foreach (Collider collider in Physics.OverlapSphere(transform.position, 5f, neighborLayerMask, QueryTriggerInteraction.Collide))
         {
-            if(collider.gameObject == this.gameObject) {
+            if(collider.gameObject == gameObject) {
                 continue;
             }
 
@@ -53,23 +58,41 @@ public class DoorManager : ParameterizedEventIngester<RoomManager.RoomEvent>
     }
 
     private void Open() {
-        if(neighbor != null) {
-            gameObject.SetActive(false);
-            neighbor.gameObject.SetActive(false);
+        if(neighbor != null && closed) {
+            PlayOpenAnimation();
+            neighbor.PlayOpenAnimation();
         }
     }
 
     private void Close() {
         
-        gameObject.SetActive(true);
+        if(closed) {
+            return;
+        }
+
+        PlayCloseAnimation();
         
         if(neighbor != null) {
-            neighbor.gameObject.SetActive(true);
+            neighbor.PlayCloseAnimation();
         }
     }
 
     private void OnDrawGizmosSelected() {
         Gizmos.color = new Color(0, 1, 0, .3f);
         Gizmos.DrawSphere(transform.position, 5f);
+    }
+
+    public void PlayOpenAnimation() {
+        DOTween.Sequence()
+               .Append(transform.DOMove(transform.position + (Vector3.down * 15), doorAnimationTime).SetEase(Ease.InCubic))
+               .Play();
+        closed = false;
+    }
+
+    public void PlayCloseAnimation() {
+        DOTween.Sequence()
+               .Append(transform.DOMove(transform.position + (Vector3.up * 15), doorAnimationTime).SetEase(Ease.InCubic))
+               .Play();
+        closed = true;
     }
 }

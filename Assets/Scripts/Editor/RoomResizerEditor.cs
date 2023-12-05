@@ -15,6 +15,7 @@ public class RoomResizerEditor : Editor
         if(GUILayout.Button("Resize"))
         {
             resizer.Resize();
+            EditorUtility.SetDirty(resizer.GetEnemySpawner().GetComponent<Spawner>());
         }
     }
 }

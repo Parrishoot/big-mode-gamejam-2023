@@ -11,4 +11,14 @@ public static class GameUtil
     public static float GetRandomValueWithVariance(float baseValue, float variance) {
         return Random.Range(baseValue - (baseValue * variance), baseValue + baseValue * variance);        
     }
+
+    public static T GetRandomValueFromList<T>(List<T> list) {
+        return list[Random.Range(0, list.Count - 1)];
+    }
+
+    public static void ClearChildren(Transform transform) {
+        while(transform.childCount > 0) {
+            GameObject.DestroyImmediate(transform.GetChild(0).gameObject);
+        }
+    }
 }

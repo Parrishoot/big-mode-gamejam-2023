@@ -10,12 +10,6 @@ public class RoomResizer : MonoBehaviour
     private GameObject roomBasePrefab;
 
     [SerializeField]
-    private float baseRoomSize = 60f;
-
-    [SerializeField]
-    private float baseWallSize = 5f;
-
-    [SerializeField]
     private GameObject roomParent;
 
     [SerializeField]
@@ -39,16 +33,19 @@ public class RoomResizer : MonoBehaviour
         ResizeSpawnerAndTrigger();
     }
 
+    public void Resize(Vector2Int newRoomSize) {
+        roomSize = newRoomSize;
+        Resize();
+    }
+
     private void ClearExistingRoomPieces() {
-        while(roomParent.transform.childCount > 0) {
-            DestroyImmediate(roomParent.transform.GetChild(0).gameObject);
-        }
+        GameUtil.ClearChildren(roomParent.transform);
     }
 
     private void CreateRoomPiece(int xCoord, int yCoord) {
 
         GameObject roomPiece = Instantiate(roomBasePrefab, roomParent.transform);
-        roomPiece.transform.localPosition = new Vector3((xCoord - 1) * baseRoomSize, 0, (yCoord - 1) * baseRoomSize);
+        roomPiece.transform.localPosition = new Vector3((xCoord - 1) * RoomMeta.BASE_ROOM_SIZE, 0, (yCoord - 1) * RoomMeta.BASE_ROOM_SIZE);
 
         RoomWalls roomWalls = roomPiece.GetComponent<RoomWalls>();
 
@@ -83,10 +80,8 @@ public class RoomResizer : MonoBehaviour
 
     private void ResizeSpawnerAndTrigger() {
 
-        float width = (roomSize.x * baseRoomSize) - baseWallSize;
-        float height = (roomSize.y * baseRoomSize) - baseWallSize;
-
-        Debug.Log(width + ", " + height);
+        float width = (roomSize.x * RoomMeta.BASE_ROOM_SIZE) - RoomMeta.BASE_WALL_SIZE;
+        float height = (roomSize.y * RoomMeta.BASE_ROOM_SIZE) - RoomMeta.BASE_WALL_SIZE;
 
         Vector3 center = new Vector3(width, 0, height) / 2;
 
@@ -98,6 +93,10 @@ public class RoomResizer : MonoBehaviour
 
         enemySpawner.SetBounds(new Vector3(width, 0, height));
         enemySpawner.gameObject.transform.localPosition = center;
+    }
+
+    public Spawner GetEnemySpawner() {
+        return enemySpawner;
     }
     
 }
