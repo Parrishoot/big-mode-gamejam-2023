@@ -20,9 +20,14 @@ public class BulletController : MonoBehaviour
     [SerializeField]
     private HurtBox hurtBox;
 
+    [SerializeField]
+    private bool destroyOnHit = true;
+
     void Start() {
         hurtBox.AddOnHurtBoxHitEvent(() => {
-            Destroy(gameObject);
+            if(destroyOnHit) {
+                Destroy(gameObject);
+            }
         });
     }
 

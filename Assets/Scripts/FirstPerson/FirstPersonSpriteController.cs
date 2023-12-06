@@ -27,7 +27,6 @@ public class FirstPersonSpriteController : PerspectiveDependentController
     }
 
     void LateUpdate() {
-        transform.LookAt(Camera.main.transform);
-        transform.Rotate(0, 180, 0); 
+        transform.LookAt(GameUtil.GetPlayerGameObject().transform);
     }
 }
