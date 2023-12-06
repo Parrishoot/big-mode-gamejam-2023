@@ -62,6 +62,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunController: {fileID: 8727486677209829261}
   fireTime: 3
+  numberOfShots: {x: 1, y: 1}
+  timeBetweenShots: 0
 --- !u!1 &5461806867835691559
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,6 +186,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reloadTime: 0
   spawner: {fileID: 6929265448106848577}
+  spreadAngle: 0
+  bulletsPerShot: 1
+  uniformSpread: 1
+  timeBetweenShots: 0
 --- !u!114 &6929265448106848577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,8 +203,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bounds: {x: 0, y: 0, z: 0}
-  spawnObject: {fileID: 1731420315461239619, guid: 73ec0ff3836ea6b41a92b0d4d29ef249,
-    type: 3}
+  spawnObjects:
+  - {fileID: 1731420315461239619, guid: 73ec0ff3836ea6b41a92b0d4d29ef249, type: 3}
 --- !u!1 &7618637767045824595
 GameObject:
   m_ObjectHideFlags: 0

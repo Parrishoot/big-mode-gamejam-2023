@@ -6,6 +6,7 @@ public class EnemyGunController : GunController
 {
     protected override Vector3 GetShootingVector()
     {
-        return GameUtil.GetPlayerGameObject().transform.position - transform.position;
+        Vector3 shootingVector = GameUtil.GetPlayerGameObject().transform.position - transform.position;
+        return new Vector3(shootingVector.x, 0, shootingVector.z);
     }
 }

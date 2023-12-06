@@ -487,7 +487,6 @@ MonoBehaviour:
   neighborLayerMask:
     serializedVersion: 2
     m_Bits: 4096
-  doorAnimationTime: 0.5
 --- !u!1 &2496766319920568486
 GameObject:
   m_ObjectHideFlags: 0
@@ -1834,7 +1833,6 @@ MonoBehaviour:
   neighborLayerMask:
     serializedVersion: 2
     m_Bits: 4096
-  doorAnimationTime: 0.5
 --- !u!1 &5013233871236808290
 GameObject:
   m_ObjectHideFlags: 0
@@ -1984,8 +1982,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bounds: {x: 47.5, y: 0, z: 47.5}
-  spawnObject: {fileID: 106630648773838452, guid: 8519d7df26b3ce04388c6b2265f4bbc5,
-    type: 3}
+  spawnObjects:
+  - {fileID: 2924268805450987974, guid: eec77461ac3eb4c41966a0933360e70c, type: 3}
+  - {fileID: 5438337486531268330, guid: e01bc52bb286993488dbdaf62dc58475, type: 3}
 --- !u!1 &5797328996021251780
 GameObject:
   m_ObjectHideFlags: 0
@@ -2190,8 +2189,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomBasePrefab: {fileID: 1424073386167790412, guid: 4d8d5571e463e144daed4b5a1bfb4487,
     type: 3}
-  baseRoomSize: 55
-  baseWallSize: 5
   roomParent: {fileID: 5101946687590992964}
   roomManager: {fileID: 6868154876651745195}
   roomTrigger: {fileID: 4635290814567809144}
@@ -2445,7 +2442,6 @@ MonoBehaviour:
   neighborLayerMask:
     serializedVersion: 2
     m_Bits: 4096
-  doorAnimationTime: 0.5
 --- !u!1 &8609853569415083276
 GameObject:
   m_ObjectHideFlags: 0
@@ -2568,7 +2564,6 @@ MonoBehaviour:
   neighborLayerMask:
     serializedVersion: 2
     m_Bits: 4096
-  doorAnimationTime: 0.5
 --- !u!1 &8784061781990036884
 GameObject:
   m_ObjectHideFlags: 0

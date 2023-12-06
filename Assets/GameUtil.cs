@@ -1,4 +1,4 @@
-using System.Collections;
+
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,7 +13,12 @@ public static class GameUtil
     }
 
     public static T GetRandomValueFromList<T>(List<T> list) {
-        return list[Random.Range(0, list.Count - 1)];
+
+        if(list.Count == 0) {
+            return default;
+        }
+
+        return list[Random.Range(0, list.Count)];
     }
 
     public static void ClearChildren(Transform transform) {
