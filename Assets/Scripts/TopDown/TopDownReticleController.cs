@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class TopDownReticleController : PerspectiveDependentController
 {
+
     [SerializeField]
-    private Transform topDownGunControllerTransform;
+    private Vector2 mouseSensitivity;
 
     private Vector3 startingPosition;
 
@@ -26,7 +27,10 @@ public class TopDownReticleController : PerspectiveDependentController
     }
 
     private void Update() {
-        transform.position = RectTransformUtility.WorldToScreenPoint(Camera.main, topDownGunControllerTransform.position);
+        float inputX = Input.GetAxis("Mouse X") * mouseSensitivity.x * Time.deltaTime;
+        float inputY = Input.GetAxis("Mouse Y") * mouseSensitivity.y * Time.deltaTime;
+
+        transform.localPosition += new Vector3(inputX, inputY, 0);
     }
 
     public override void OnTransitionToStart()

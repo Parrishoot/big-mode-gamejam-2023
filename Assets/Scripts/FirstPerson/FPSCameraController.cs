@@ -36,7 +36,7 @@ public class FPSCameraController : CameraController
 
         cameraYRotation -= inputY;
         cameraYRotation = Mathf.Clamp(cameraYRotation, -90f, 90f);
-        transform.eulerAngles = new Vector3(cameraYRotation, 
+        transform.eulerAngles = new Vector3(0, // cameraYRotation, 
                                             transform.localEulerAngles.y + inputX,
                                             0);
     }

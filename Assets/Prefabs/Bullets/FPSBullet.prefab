@@ -8,15 +8,35 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 524242973780380996, guid: 83d5eec9fbac29343aadbce49c3c1ba7,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 524242973780380996, guid: 83d5eec9fbac29343aadbce49c3c1ba7,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 524242973780380996, guid: 83d5eec9fbac29343aadbce49c3c1ba7,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 691935728267919861, guid: 83d5eec9fbac29343aadbce49c3c1ba7,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 7ad2525cadb302e4c87091a8461d81a1, type: 2}
+    - target: {fileID: 2560206294650383455, guid: 83d5eec9fbac29343aadbce49c3c1ba7,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.24
+      objectReference: {fileID: 0}
     - target: {fileID: 3119453484560744640, guid: 83d5eec9fbac29343aadbce49c3c1ba7,
         type: 3}
       propertyPath: characterMovementSpeed
-      value: 7000
+      value: 6000
       objectReference: {fileID: 0}
     - target: {fileID: 4185207273138680395, guid: 83d5eec9fbac29343aadbce49c3c1ba7,
         type: 3}
@@ -28,25 +48,20 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 5243322433321932077, guid: 83d5eec9fbac29343aadbce49c3c1ba7,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5509594158411280815, guid: 83d5eec9fbac29343aadbce49c3c1ba7,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5509594158411280815, guid: 83d5eec9fbac29343aadbce49c3c1ba7,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5509594158411280815, guid: 83d5eec9fbac29343aadbce49c3c1ba7,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5509594158411280815, guid: 83d5eec9fbac29343aadbce49c3c1ba7,
         type: 3}
@@ -159,5 +174,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   originTransform: {fileID: 0}
-  scaleFactor: 0.5
+  scaleFactor: 0.7
   maxScale: 5

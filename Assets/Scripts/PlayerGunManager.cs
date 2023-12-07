@@ -2,34 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerGunManager : MonoBehaviour
+public class PlayerGunManager : GunManager
 {
     [SerializeField]
-    private GunController topDownGunController;
+    private Transform gunRotatorTransform;
 
     [SerializeField]
-    private GunController fpsGunController;
+    private PlayerGunSupplier playerGunSupplier;
 
-    private GunController currentGunController;
-
-
-    // Start is called before the first frame update
-    void Awake()
+    protected override Vector3 GetShootingVector()
     {
-        CameraPerspectiveSwapper.Instance.AddOnPerspectiveSwitchEvent(SwapGuns);
+        return gunRotatorTransform.forward;
     }
 
-    public void SwapGuns(PerspectiveMode fromPerspectiveMode, PerspectiveMode toPerspectiveMode) {
-
-        if(currentGunController != null) {
-            currentGunController.enabled = false;
-        }
-
-        currentGunController = toPerspectiveMode == PerspectiveMode.TOP_DOWN ? topDownGunController : fpsGunController;
-        currentGunController.Reset();
-    }
-
-    public GunController GetCurrentGunController() {
-        return currentGunController;
+    protected override GunController GetGunController()
+    {
+        return playerGunSupplier.GetCurrentController().perspectiveGunController;
     }
 }

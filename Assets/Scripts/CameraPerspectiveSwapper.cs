@@ -43,8 +43,9 @@ public class CameraPerspectiveSwapper : Singleton<CameraPerspectiveSwapper>
     private PerspectiveMode startingPerspective;
 
     [SerializeField]
-    private Follower cameraFollower;
+    private TransformFollower cameraFollower;
 
+// 
     [SerializeField]
     private CharacterMovementController playerMovementController;
 

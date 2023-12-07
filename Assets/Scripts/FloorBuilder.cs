@@ -22,7 +22,7 @@ public class FloorBuilder : MonoBehaviour
 
     private List<RoomResizer> roomResizers;
 
-    private int numberOfCreatedRooms = 0;
+    private int numberOfCreatedRooms = 0; 
 
     private Vector2Int FAIL = new Vector2Int(-1, -1);
 

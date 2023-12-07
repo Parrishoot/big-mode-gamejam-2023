@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using JetBrains.Annotations;
 using UnityEngine;
 
-public class CylinderGunController : GunController
+public class CylinderGunManager : EnemyGunManager
 {
-    public bool rotated = false;
+    private bool rotated = false;
 
     protected override Vector3 GetShootingVector()
     {
@@ -15,8 +14,7 @@ public class CylinderGunController : GunController
             return Vector3.forward;
         }
 
-        float rotateAngle = (spreadAngle / bulletsPerShot) / 2;
-
+        float rotateAngle = (gunController.GetSpreadAngle() / gunController.GetBulletsPerShot()) / 2;
         return Quaternion.AngleAxis(rotateAngle, Vector3.up) * Vector3.forward;
     }
 }

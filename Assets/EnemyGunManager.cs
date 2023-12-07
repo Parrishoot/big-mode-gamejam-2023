@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyGunManager : MonoBehaviour
+public class EnemyGunManager : GunManager
 {
-    [SerializeField]
-    private GunController gunController;
 
     [SerializeField]
     private float fireTime = 1f;
@@ -38,10 +36,16 @@ public class EnemyGunManager : MonoBehaviour
         int shotsToFire = Random.Range(numberOfShots.x, numberOfShots.y + 1);
 
         for(int i = 0; i < shotsToFire; i++) {
-            gunController.Fire();
+            Fire();
             yield return new WaitForSeconds(timeBetweenShots);    
         }
 
         ResetTimer();
+    }
+
+    protected override Vector3 GetShootingVector()
+    {
+        Vector3 shotVector = GameUtil.GetPlayerGameObject().transform.position - gunController.transform.position;
+        return new Vector3(shotVector.x, 0, shotVector.z);
     }
 }

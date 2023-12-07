@@ -26,4 +26,8 @@ public static class GameUtil
             GameObject.DestroyImmediate(transform.GetChild(0).gameObject);
         }
     }
+
+    public static Vector3 GetMouseScreenPosition() {
+        return Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    }
 }

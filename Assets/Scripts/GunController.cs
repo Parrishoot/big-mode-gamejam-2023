@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class GunController : MonoBehaviour
+public class GunController : MonoBehaviour
 {
     [SerializeField]
     private float reloadTime = .3f;
@@ -29,9 +29,9 @@ public abstract class GunController : MonoBehaviour
 
     protected OnShotFiredEvent onShotFiredEvent;
 
-    public void Fire() {
+    public void Fire(Vector3 shotDirection) {
         if(reloadTimer == null || reloadTimer.IsFinished()) {
-            StartCoroutine(ShootGun());
+            StartCoroutine(ShootGun(shotDirection));
         }
     }
 
@@ -42,8 +42,6 @@ public abstract class GunController : MonoBehaviour
     protected virtual void Update() {
         reloadTimer?.DecreaseTime(Time.deltaTime);
     }
-
-    protected abstract Vector3 GetShootingVector();
 
     public void AddOnShotFiredEvent(OnShotFiredEvent newOnShotFiredEvent) {
         onShotFiredEvent += newOnShotFiredEvent;
@@ -57,14 +55,14 @@ public abstract class GunController : MonoBehaviour
         return reloadTime;
     }
 
-    private List<Vector3> GetUniformShotDirections() {
+    private List<Vector3> GetUniformShotDirections(Vector3 shotDirection) {
 
         float spreadPerShot = spreadAngle / bulletsPerShot;
         float minAngle =  -(spreadAngle / 2);
 
         List<Vector3> directions = new List<Vector3>();
 
-        Vector3 shootingVector = GetShootingVector();
+        Vector3 shootingVector = shotDirection.normalized;
 
         for(int i = 0; i < bulletsPerShot; i++) {
             directions.Add(Quaternion.AngleAxis(minAngle + (i * spreadPerShot), Vector3.up) * shootingVector);
@@ -73,14 +71,14 @@ public abstract class GunController : MonoBehaviour
         return directions;
     }
 
-    private List<Vector3> GetRandomShotDirections() {
+    private List<Vector3> GetRandomShotDirections(Vector3 shotDirection) {
 
         float minAngle =  -(spreadAngle / 2);
         float maxAngle =  spreadAngle / 2;
 
         List<Vector3> directions = new List<Vector3>();
 
-        Vector3 shootingVector = GetShootingVector();
+        Vector3 shootingVector = shotDirection.normalized;
 
         for(int i = 0; i < bulletsPerShot; i++) {
             directions.Add(Quaternion.AngleAxis(Random.Range(minAngle, maxAngle), Vector3.up) * shootingVector);
@@ -89,20 +87,31 @@ public abstract class GunController : MonoBehaviour
         return directions;
     }
 
-    public IEnumerator ShootGun() {
+    public IEnumerator ShootGun(Vector3 shotDirection) {
 
-        List<Vector3> directions = uniformSpread ? GetUniformShotDirections() : GetRandomShotDirections();
+        List<Vector3> directions = uniformSpread ? GetUniformShotDirections(shotDirection) : GetRandomShotDirections(shotDirection);
         
         onShotFiredEvent?.Invoke();
 
         for(int i = 0; i < bulletsPerShot; i++) {
             GameObject bulletObject = spawner.Spawn();
             bulletObject.GetComponent<BulletController>().Shoot(directions[i]);
-            yield return new WaitForSeconds(timeBetweenShots);
+
+            if(timeBetweenShots != 0) {
+                yield return new WaitForSeconds(timeBetweenShots);
+            }
         }
 
         reloadTimer = new Timer(reloadTime);
 
         yield return null;
+    }
+
+    public float GetSpreadAngle() {
+        return spreadAngle;
+    }
+
+    public int GetBulletsPerShot() {
+        return bulletsPerShot;
     }
 }
