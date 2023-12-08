@@ -115,6 +115,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 775030728554732954, guid: eec77461ac3eb4c41966a0933360e70c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 775030728554732954, guid: eec77461ac3eb4c41966a0933360e70c,
+        type: 3}
+      propertyPath: timeBounds.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 775030728554732954, guid: eec77461ac3eb4c41966a0933360e70c,
+        type: 3}
+      propertyPath: timeBounds.y
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1310328348666494806, guid: eec77461ac3eb4c41966a0933360e70c,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -140,6 +155,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cylinder
       objectReference: {fileID: 0}
+    - target: {fileID: 3284239842626968446, guid: eec77461ac3eb4c41966a0933360e70c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3683197355336494914, guid: eec77461ac3eb4c41966a0933360e70c,
+        type: 3}
+      propertyPath: enemyBehaviorOptions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3683197355336494914, guid: eec77461ac3eb4c41966a0933360e70c,
+        type: 3}
+      propertyPath: enemyBehaviorOptions.Array.data[0]
+      value: 
+      objectReference: {fileID: 7578638475215121078}
     - target: {fileID: 6329497968537735100, guid: eec77461ac3eb4c41966a0933360e70c,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -250,6 +280,11 @@ PrefabInstance:
       propertyPath: bulletsPerShot
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 8873750544077348585, guid: eec77461ac3eb4c41966a0933360e70c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5832583842383736895, guid: eec77461ac3eb4c41966a0933360e70c, type: 3}
     - {fileID: 6419588102360453164, guid: eec77461ac3eb4c41966a0933360e70c, type: 3}
@@ -307,3 +342,15 @@ MonoBehaviour:
   fireTime: 5
   numberOfShots: {x: 3, y: 5}
   timeBetweenShots: 0.25
+--- !u!114 &7578638475215121078 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 775030728554732954, guid: eec77461ac3eb4c41966a0933360e70c,
+    type: 3}
+  m_PrefabInstance: {fileID: 7200637729746089772}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fe8be0cdf354934baabbb5304fc7c59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

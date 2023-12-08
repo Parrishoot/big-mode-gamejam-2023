@@ -14,7 +14,7 @@ public class FloorBuilderEditor : Editor
 
         if(GUILayout.Button("Build Floor"))
         {
-            floorBuilder.CreateFloor();
+            floorBuilder.BuildFloor();
 
             foreach(RoomResizer resizer in floorBuilder.GetRoomResizers()) {
                 EditorUtility.SetDirty(resizer.GetEnemySpawner().GetComponent<Spawner>());

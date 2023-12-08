@@ -21,10 +21,10 @@ MonoBehaviour:
     m_Value: 1.84
   intensity:
     m_OverrideState: 1
-    m_Value: 1.09
+    m_Value: 0
   scatter:
     m_OverrideState: 1
-    m_Value: 0.613
+    m_Value: 0.494
   clamp:
     m_OverrideState: 0
     m_Value: 65472
@@ -113,7 +113,7 @@ MonoBehaviour:
   - {fileID: 3602767715544930074}
   - {fileID: -6969483218301668624}
   - {fileID: 5464379202988413076}
-  - {fileID: 3545139609965919305}
+  - {fileID: 2384062789292642805}
 --- !u!114 &849379129802519247
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -154,7 +154,7 @@ MonoBehaviour:
   maxNits:
     m_OverrideState: 0
     m_Value: 1000
---- !u!114 &3545139609965919305
+--- !u!114 &2384062789292642805
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -163,19 +163,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70afe9e12c7a7ed47911bb608a23a8ff, type: 3}
-  m_Name: SplitToning
+  m_Script: {fileID: 11500000, guid: e021b4c809a781e468c2988c016ebbea, type: 3}
+  m_Name: ColorLookup
   m_EditorClassIdentifier: 
-  active: 0
-  shadows:
+  active: 1
+  texture:
     m_OverrideState: 1
-    m_Value: {r: 0.5566038, g: 0.5566038, b: 0.5566038, a: 1}
-  highlights:
+    m_Value: {fileID: 2800000, guid: bb3eefaffac30f84ba7b9771ed2eb6f4, type: 3}
+    dimension: 1
+  contribution:
     m_OverrideState: 1
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
-  balance:
-    m_OverrideState: 1
-    m_Value: 31.2
+    m_Value: 0.204
 --- !u!114 &3602767715544930074
 MonoBehaviour:
   m_ObjectHideFlags: 3

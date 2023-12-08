@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class FloorBuilder : MonoBehaviour
@@ -119,7 +120,7 @@ public class FloorBuilder : MonoBehaviour
         }
     }
 
-    public void CreateFloor() {
+    public void BuildFloor() {
         while(!TryCreate()) {
 
         }
