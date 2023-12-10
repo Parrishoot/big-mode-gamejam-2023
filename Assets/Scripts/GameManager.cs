@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
-    private FloorBuilder floorBuilder;
+    private FloorManager floorManager;
 
     [SerializeField]
     private GameObject loadingScreen;
@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         loadingScreen.SetActive(true);
-        floorBuilder.BuildFloor();
+        floorManager.BuildFloor();
         loadingScreen.SetActive(false);
         playerObject.SetActive(true);
     }

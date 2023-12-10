@@ -2,8 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthController : BasicEventTrigger
+public class HealthController : ParameterizedEventTrigger<HealthController.EventType>
 {
+
+    public enum EventType {
+        DEATH,
+        DAMAGE_TAKEN
+    }
 
     [SerializeField]
     private HitBox hitBox;
@@ -18,6 +23,9 @@ public class HealthController : BasicEventTrigger
     }
 
     private void TakeDamage(int damage) {
+
+        TriggerEvent(EventType.DAMAGE_TAKEN);
+
         totalHealth -= damage;
 
         if(totalHealth <= 0) {
@@ -26,7 +34,7 @@ public class HealthController : BasicEventTrigger
     }
 
     private void Death() {
-        TriggerEvent();
+        TriggerEvent(EventType.DEATH);
         Destroy(gameObject);
     }
 }

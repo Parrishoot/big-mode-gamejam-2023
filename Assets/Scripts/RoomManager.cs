@@ -23,7 +23,11 @@ public class RoomManager : ParameterizedEventTrigger<RoomManager.RoomEvent>
 
     private bool initialized = false;
 
-    private void KillEnemy() {
+    private void KillEnemy(HealthController.EventType healthControllerEventType) {
+
+        if(healthControllerEventType != HealthController.EventType.DEATH) {
+            return;
+        }
 
         numberOfEnemiesRemaining--;
         if(numberOfEnemiesRemaining <= 0) {
@@ -50,6 +54,8 @@ public class RoomManager : ParameterizedEventTrigger<RoomManager.RoomEvent>
         }
 
         initialized = true;
+
+        FloorManager.Instance.SetActiveRoom(this);
 
         TriggerEvent(RoomEvent.ROOM_ENTERED);
     }

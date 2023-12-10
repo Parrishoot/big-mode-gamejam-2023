@@ -17,7 +17,12 @@ public class FloorBuilder : MonoBehaviour
     [SerializeField]
     private GameObject roomPrefab;
 
-    private RoomDetails[,] roomDetails;
+    [SerializeField]
+    private FloorMiniMapBuilder miniMapBuilder;
+
+    private RoomDetails[,] roomCoordinateDetails;
+
+    private List<RoomDetails> roomDetails;
 
     private Queue<RoomDetails> roomQueue;
 
@@ -27,7 +32,7 @@ public class FloorBuilder : MonoBehaviour
 
     private Vector2Int FAIL = new Vector2Int(-1, -1);
 
-    private class RoomDetails {
+    public class RoomDetails {
 
         public Vector2Int Size { get; set; }
 
@@ -77,7 +82,7 @@ public class FloorBuilder : MonoBehaviour
         }
     }
 
-    private class DoorDetails {
+    public class DoorDetails {
 
         public Vector2Int Origin { get; set; }
 
@@ -120,16 +125,23 @@ public class FloorBuilder : MonoBehaviour
         }
     }
 
-    public void BuildFloor() {
+    public List<RoomDetails> BuildFloor() {
+
         while(!TryCreate()) {
 
         }
+
+        miniMapBuilder.BuildUI(roomCoordinateDetails);
+
+        return roomDetails;
     }
 
     private bool TryCreate() {
-        roomDetails = new RoomDetails[numberOfRooms * maxRoomSize * 2, numberOfRooms * maxRoomSize * 2];
+        
+        roomCoordinateDetails = new RoomDetails[numberOfRooms * maxRoomSize * 2, numberOfRooms * maxRoomSize * 2];
         roomQueue = new Queue<RoomDetails>();
         roomResizers = new List<RoomResizer>();
+        roomDetails = new List<RoomDetails>();
 
         GameUtil.ClearChildren(roomTransform);
 
@@ -202,11 +214,12 @@ public class FloorBuilder : MonoBehaviour
 
         for(int x = roomOrigin.x; x < roomOrigin.x + roomSize.x; x++) {
             for(int y = roomOrigin.y; y < roomOrigin.y + roomSize.y; y++) {
-                roomDetails[x, y] = newRoomDetails;
+                roomCoordinateDetails[x, y] = newRoomDetails;
             }
         }
 
         roomQueue.Enqueue(newRoomDetails);
+        roomDetails.Add(newRoomDetails);
         numberOfCreatedRooms++;
     }
 
@@ -232,7 +245,7 @@ public class FloorBuilder : MonoBehaviour
 
         for(int x = startingX; x < endingX; x++) {
             for(int y = startingY; y < endingY; y++) {
-                if(roomDetails[x,y] != null) {
+                if(roomCoordinateDetails[x,y] != null) {
                     return FAIL;
                 }
             }
@@ -246,7 +259,7 @@ public class FloorBuilder : MonoBehaviour
     }
 
     private Vector2Int GetCenter() {
-        return new Vector2Int(roomDetails.GetLength(0) / 2, roomDetails.GetLength(1) / 2);
+        return new Vector2Int(roomCoordinateDetails.GetLength(0) / 2, roomCoordinateDetails.GetLength(1) / 2);
     }
 
     private void CenterRooms() {

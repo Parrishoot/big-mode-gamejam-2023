@@ -5,6 +5,13 @@ using UnityEngine;
 
 public class RoomWalls : MonoBehaviour
 {
+    public enum WallType {
+        LEFT,
+        RIGHT,
+        TOP,
+        BOTTOM
+    }
+
     [field:SerializeField]
     public GameObject LeftWalls { get; set; }
 

@@ -51,19 +51,21 @@ public class RoomResizer : MonoBehaviour
 
         RoomWalls roomWalls = roomPiece.GetComponent<RoomWalls>();
 
-        if(xCoord != 1) {
+        List<RoomWalls.WallType> walls = GetWallsForRoomCell(new Vector2Int(xCoord, yCoord), roomSize);
+
+        if(!walls.Contains(RoomWalls.WallType.LEFT)) {
             DestroyImmediate(roomWalls.LeftWalls);
         }
 
-        if(xCoord != roomSize.x) {
+        if(!walls.Contains(RoomWalls.WallType.RIGHT)) {
             DestroyImmediate(roomWalls.RightWalls);
         }
 
-        if(yCoord != 1) {
+        if(!walls.Contains(RoomWalls.WallType.TOP)) {
             DestroyImmediate(roomWalls.TopWalls);
         }
 
-        if(yCoord != roomSize.y) {
+        if(!walls.Contains(RoomWalls.WallType.BOTTOM)) {
             DestroyImmediate(roomWalls.BottomWalls);
         }
 
@@ -103,4 +105,31 @@ public class RoomResizer : MonoBehaviour
         return enemySpawner;
     }
     
+    public static List<RoomWalls.WallType> GetWallsForRoomCell(Vector2Int cellCoords, Vector2Int roomSize) {
+
+        List<RoomWalls.WallType> walls = new List<RoomWalls.WallType>(new RoomWalls.WallType[]{
+            RoomWalls.WallType.LEFT,
+            RoomWalls.WallType.RIGHT,
+            RoomWalls.WallType.BOTTOM,
+            RoomWalls.WallType.TOP
+        });
+
+        if(cellCoords.x != 1) {
+            walls.Remove(RoomWalls.WallType.LEFT);
+        }
+
+        if(cellCoords.x != roomSize.x) {
+            walls.Remove(RoomWalls.WallType.RIGHT);
+        }
+
+        if(cellCoords.y != 1) {
+            walls.Remove(RoomWalls.WallType.BOTTOM);
+        }
+
+        if(cellCoords.y != roomSize.y) {
+            walls.Remove(RoomWalls.WallType.TOP);
+        }
+
+        return walls;
+    }
 }

@@ -37,6 +37,5 @@ public abstract class TimedEnemyBehavior : EnemyBehavior
 
     private void Finish() {
         enabled = false;
-        Debug.Log("Done!");
     }
 }
