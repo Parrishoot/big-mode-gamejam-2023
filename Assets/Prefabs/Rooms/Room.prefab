@@ -2192,6 +2192,8 @@ MonoBehaviour:
   enemySpawner: {fileID: 490406712317417361}
   numberOfEnemiesToSpawn: {x: 3, y: 5}
   roomCollider: {fileID: 4635290814567809144}
+  startingEnemies: []
+  spawnRandomizedEnemies: 1
 --- !u!114 &6567031161385200049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2666,7 +2668,7 @@ MonoBehaviour:
   spawnObjects:
   - {fileID: 5438337486531268330, guid: e01bc52bb286993488dbdaf62dc58475, type: 3}
   - {fileID: 2367858071713381514, guid: a3b641bef28e4644c9630c7e655e2a46, type: 3}
-  - {fileID: 2924268805450987974, guid: 8e1266a41a567a24988004a387bef7f3, type: 3}
+  - {fileID: 3152448409815080279, guid: 8e1266a41a567a24988004a387bef7f3, type: 3}
   - {fileID: 2924268805450987974, guid: eec77461ac3eb4c41966a0933360e70c, type: 3}
 --- !u!1 &8953100093124053733
 GameObject:

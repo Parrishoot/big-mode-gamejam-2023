@@ -13,6 +13,9 @@ public class EnemySpawnAnimator : ParameterizedEventIngester<HealthController.Ev
     [SerializeField]
     private MaterialSwapper materialSwapper;
 
+    [SerializeField]
+    private GameObject parentObject;
+
     private Timer animationTimer;
 
     private bool spawning = true;
@@ -37,7 +40,7 @@ public class EnemySpawnAnimator : ParameterizedEventIngester<HealthController.Ev
 
         animationTimer = new Timer(deathAnimationTime);
         animationTimer.AddOnTimerFinishedEvent(() => {
-            Destroy(transform.root.gameObject);
+            Destroy(parentObject);
         });
         spawning = false;
     }

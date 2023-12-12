@@ -37,4 +37,8 @@ public class HealthController : ParameterizedEventTrigger<HealthController.Event
             TriggerEvent(EventType.DAMAGE_TAKEN);
         }
     }
+
+    public int GetCurrentHealth() {
+        return totalHealth;
+    }
 }

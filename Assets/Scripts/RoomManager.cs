@@ -19,6 +19,12 @@ public class RoomManager : ParameterizedEventTrigger<RoomManager.RoomEvent>
     [SerializeField]
     private BoxCollider roomCollider;
 
+    [SerializeField]
+    private List<HealthController> startingEnemies;
+
+    [SerializeField]
+    private bool spawnRandomizedEnemies = true;
+
     private int numberOfEnemiesRemaining;
 
     private bool initialized = false;
@@ -38,6 +44,12 @@ public class RoomManager : ParameterizedEventTrigger<RoomManager.RoomEvent>
 
     private void Start() {
         roomCollider.enabled = true;
+
+        numberOfEnemiesRemaining = 0;
+
+        foreach(HealthController healthController in startingEnemies) {
+            healthController.AddOnEventTriggeredEvent(KillEnemy);
+        }
     }
 
     private void Init() {
@@ -48,11 +60,13 @@ public class RoomManager : ParameterizedEventTrigger<RoomManager.RoomEvent>
             return;
         }
 
-        numberOfEnemiesRemaining = Random.Range(numberOfEnemiesToSpawn.x, numberOfEnemiesToSpawn.y);
+        if(spawnRandomizedEnemies) {
+            numberOfEnemiesRemaining += Random.Range(numberOfEnemiesToSpawn.x, numberOfEnemiesToSpawn.y);
 
-        for(int i = 0; i < numberOfEnemiesRemaining; i++) {
-            GameObject enemy = enemySpawner.Spawn();
-            enemy.GetComponent<HealthController>().AddOnEventTriggeredEvent(KillEnemy);
+            for(int i = 0; i < numberOfEnemiesRemaining; i++) {
+                GameObject enemy = enemySpawner.Spawn();
+                enemy.GetComponent<HealthController>().AddOnEventTriggeredEvent(KillEnemy);
+            }
         }
 
         initialized = true;

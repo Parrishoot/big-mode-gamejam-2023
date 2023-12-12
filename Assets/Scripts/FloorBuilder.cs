@@ -20,11 +20,18 @@ public class FloorBuilder : MonoBehaviour
     [SerializeField]
     private FloorMiniMapBuilder miniMapBuilder;
 
+    [SerializeField]
+    private List<GameObject> startRooms;
+
     private RoomDetails[,] roomCoordinateDetails;
 
     private List<RoomDetails> roomDetails;
 
     private Queue<RoomDetails> roomQueue;
+
+    private Queue<GameObject> startRoomQueue;
+
+    private Queue<GameObject> endRoomQueue;
 
     private List<RoomResizer> roomResizers;
 
@@ -140,6 +147,7 @@ public class FloorBuilder : MonoBehaviour
         
         roomCoordinateDetails = new RoomDetails[numberOfRooms * maxRoomSize * 2, numberOfRooms * maxRoomSize * 2];
         roomQueue = new Queue<RoomDetails>();
+        startRoomQueue = new Queue<GameObject>(startRooms);
         roomResizers = new List<RoomResizer>();
         roomDetails = new List<RoomDetails>();
 
@@ -148,14 +156,25 @@ public class FloorBuilder : MonoBehaviour
         numberOfCreatedRooms = 0;
 
         do {
-            Vector2Int nextRoomSize = GetNextRoomSize();
+
+            Vector2Int nextRoomSize;
+            GameObject roomOverride = null;
+
+            if(startRoomQueue.Count > 0) {
+                roomOverride = startRoomQueue.Dequeue();
+                nextRoomSize = roomOverride.GetComponent<RoomResizer>().GetSize();
+            }
+            else {
+                nextRoomSize = GetNextRoomSize();
+            }
+        
             Vector2Int nextRoomOrigin = GetNextRoomOrigin(nextRoomSize);
 
             if(nextRoomOrigin == FAIL) {
                 return false;
             }
 
-            CreateRoom(nextRoomOrigin, nextRoomSize);
+            CreateRoom(nextRoomOrigin, nextRoomSize, roomOverride);
 
         } while(numberOfCreatedRooms < numberOfRooms);
 
@@ -199,10 +218,12 @@ public class FloorBuilder : MonoBehaviour
                               Random.Range(1, maxRoomSize + 1));
     }
 
-    private void CreateRoom(Vector2Int roomOrigin, Vector2Int roomSize) {
+    private void CreateRoom(Vector2Int roomOrigin, Vector2Int roomSize, GameObject roomObject) {
+
 
         Vector3 spawnPosition = new Vector3(roomOrigin.x * RoomMeta.BASE_ROOM_SIZE, 0, roomOrigin.y * RoomMeta.BASE_ROOM_SIZE);
-        GameObject roomObject = Instantiate(roomPrefab, spawnPosition, Quaternion.identity, roomTransform);
+        roomObject = Instantiate(roomObject == null ? roomPrefab : roomObject, spawnPosition, Quaternion.identity, roomTransform);
+
         
         RoomResizer roomResizer = roomObject.GetComponent<RoomResizer>();
         RoomManager roomManager = roomObject.GetComponent<RoomManager>();

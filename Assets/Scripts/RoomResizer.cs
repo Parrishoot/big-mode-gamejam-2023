@@ -135,4 +135,8 @@ public class RoomResizer : MonoBehaviour
 
         return walls;
     }
+
+    public Vector2Int GetSize() {
+        return roomSize;
+    }
 }

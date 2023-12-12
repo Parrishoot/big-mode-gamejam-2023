@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     private FloorManager floorManager;
 
     [SerializeField]
-    private GameObject loadingScreen;
+    private IntroTextController introTextController;
 
     [SerializeField]
     private GameObject playerObject;
@@ -17,9 +17,9 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        loadingScreen.SetActive(true);
+        introTextController.gameObject.SetActive(true);
         floorManager.BuildFloor();
-        loadingScreen.SetActive(false);
+        introTextController.PlayIntro();
         playerObject.SetActive(true);
     }
 }
