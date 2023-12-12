@@ -92,7 +92,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 100
+  m_Speed: 7
   m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -375,7 +375,8 @@ MonoBehaviour:
   timeBounds: {x: 5, y: 7}
   cooldownTimeBounds: {x: 0, y: 0}
   navMeshAgent: {fileID: 4131627090977044813}
-  range: 50
+  range: 30
+  stoppingDistance: 0.1
   walkTargetType: 0
 --- !u!1 &7618637767045824595
 GameObject:

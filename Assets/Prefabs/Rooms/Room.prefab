@@ -1997,7 +1997,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 1
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 0}
   m_BuildHeightMesh: 0
@@ -2664,8 +2664,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bounds: {x: 47.5, y: 0, z: 47.5}
   spawnObjects:
-  - {fileID: 2924268805450987974, guid: eec77461ac3eb4c41966a0933360e70c, type: 3}
   - {fileID: 5438337486531268330, guid: e01bc52bb286993488dbdaf62dc58475, type: 3}
+  - {fileID: 2367858071713381514, guid: a3b641bef28e4644c9630c7e655e2a46, type: 3}
+  - {fileID: 2924268805450987974, guid: 8e1266a41a567a24988004a387bef7f3, type: 3}
+  - {fileID: 2924268805450987974, guid: eec77461ac3eb4c41966a0933360e70c, type: 3}
 --- !u!1 &8953100093124053733
 GameObject:
   m_ObjectHideFlags: 0

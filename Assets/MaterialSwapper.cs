@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +23,12 @@ public class MaterialSwapper : MonoBehaviour
     public void RevertAll() {
         foreach(MeshRenderer meshRenderer in originalMaterials.Keys) {
             meshRenderer.material = originalMaterials[meshRenderer];
+        }
+    }
+
+    public void SetShaderFloatValue(String shaderPropertyName, float value) {
+        foreach(MeshRenderer meshRenderer in originalMaterials.Keys) {
+            meshRenderer.material.SetFloat(shaderPropertyName, value);
         }
     }
 }

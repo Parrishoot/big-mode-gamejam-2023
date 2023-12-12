@@ -50,6 +50,7 @@ public class RoomResizer : MonoBehaviour
         roomPiece.transform.localPosition = new Vector3((xCoord - 1) * RoomMeta.BASE_ROOM_SIZE, 0, (yCoord - 1) * RoomMeta.BASE_ROOM_SIZE);
 
         RoomWalls roomWalls = roomPiece.GetComponent<RoomWalls>();
+        ObstacleSet obstacleSet = roomPiece.GetComponent<ObstacleSet>();
 
         List<RoomWalls.WallType> walls = GetWallsForRoomCell(new Vector2Int(xCoord, yCoord), roomSize);
 
@@ -72,6 +73,8 @@ public class RoomResizer : MonoBehaviour
         foreach(DoorManager doorManager in roomPiece.GetComponentsInChildren<DoorManager>()) {
             doorManager.SetRoomManager(roomManager);
         }
+
+        GameUtil.GetRandomValueFromList(obstacleSet.ObstacleSets).SetActive(true);
     }
 
     private void CreateRoomPieces() {

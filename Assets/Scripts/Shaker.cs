@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Shaker : MonoBehaviour
 {
-   public Tweener Shake(float strength = .3f, float time = .5f, int vibrato = 150) {
-        return transform.DOShakePosition(time, strength, vibrato);
+   public Tweener Shake(float strength = .3f, float time = .5f, int vibrato = 150, bool fadeOut = true) {
+        return transform.DOShakePosition(time, strength, vibrato, fadeOut: fadeOut);
    }
 }

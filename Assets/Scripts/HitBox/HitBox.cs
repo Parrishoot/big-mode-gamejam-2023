@@ -9,6 +9,9 @@ public class HitBox: MonoBehaviour
 
     private OnHit onHitBoxEnteredEvent;
 
+    [SerializeField]
+    private bool softEnabled = false;
+
     public void AddOnHitBoxEnteredEvent(OnHit newOnHitBoxEnteredEvent) {
         onHitBoxEnteredEvent += newOnHitBoxEnteredEvent;
     }
@@ -17,9 +20,17 @@ public class HitBox: MonoBehaviour
         
         HurtBox hurtBox = other.GetComponent<HurtBox>();
         
-        if(hurtBox != null) {
+        if(hurtBox != null && enabled) {
             onHitBoxEnteredEvent?.Invoke(hurtBox.Damage);
             hurtBox.Process();
         }
+        if(softEnabled) {
+            hurtBox.Process();
+        }
+    }
+
+    public void SetSoftEnabled(bool newSoftEnabled) {
+        this.enabled = !newSoftEnabled;
+        this.softEnabled = newSoftEnabled;
     }
 }

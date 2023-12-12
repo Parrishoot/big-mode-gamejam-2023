@@ -13,10 +13,16 @@ public class MiniMapUIController : MonoBehaviour
     private RectTransform rectTransform;
 
     [SerializeField]
+    private RectTransform miniMapAnchorTransform;
+
+    [SerializeField]
     private Color activeRoomBackgroundColor;
 
     [SerializeField]
-    private Color inactiveRoomBackgroundColor;
+    private Color inactiveUndiscoveredBackgroundRoomColor;
+
+    [SerializeField]
+    private Color inactiveDiscoveredBackgroundColor;
 
     [SerializeField]
     private float uiTransitionTime = .5f;
@@ -31,12 +37,18 @@ public class MiniMapUIController : MonoBehaviour
         baseAnchorPosition = rectTransform.anchoredPosition;    
     }
 
+    private void Update() {
+        miniMapAnchorTransform.eulerAngles = new Vector3(rectTransform.eulerAngles.x,
+                                                         rectTransform.eulerAngles.y,
+                                                         Camera.main.transform.eulerAngles.y);    
+    }
+
     public void SetRoom(FloorBuilder.RoomDetails roomDetails) {
         
         rectTransform.DOAnchorPos(FindCenterOfRoom(roomDetails), uiTransitionTime).SetEase(Ease.InOutCubic);
         
         if(currentRoom != null) {
-            SetRoomColor(currentRoom, inactiveRoomBackgroundColor);
+            SetRoomColor(currentRoom, currentRoom.RoomManager.Discovered() ? inactiveDiscoveredBackgroundColor: inactiveUndiscoveredBackgroundRoomColor);
         }
 
         currentRoom = roomDetails;
@@ -52,6 +64,10 @@ public class MiniMapUIController : MonoBehaviour
 
     public void SetRoomUIElements( Dictionary<FloorBuilder.RoomDetails, List<RoomCellUIElements>> roomUIElements) {
         this.roomUIElements = roomUIElements;
+
+        foreach(FloorBuilder.RoomDetails roomDetails in roomUIElements.Keys) {
+            SetInitialColor(roomDetails);
+        }
     }
 
     public void SetRoomColor(FloorBuilder.RoomDetails roomDetails, Color color) {
@@ -60,4 +76,7 @@ public class MiniMapUIController : MonoBehaviour
         }
     }
     
+    public void SetInitialColor(FloorBuilder.RoomDetails roomDetails) {
+        SetRoomColor(roomDetails, inactiveUndiscoveredBackgroundRoomColor);
+    }
 }

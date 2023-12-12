@@ -16,7 +16,6 @@ public class HealthController : ParameterizedEventTrigger<HealthController.Event
     [SerializeField]
     private int totalHealth = 50;
 
-    // Start is called before the first frame update
     void Start()
     {
         hitBox.AddOnHitBoxEnteredEvent(TakeDamage);
@@ -24,17 +23,14 @@ public class HealthController : ParameterizedEventTrigger<HealthController.Event
 
     private void TakeDamage(int damage) {
 
-        TriggerEvent(EventType.DAMAGE_TAKEN);
-
         totalHealth -= damage;
 
         if(totalHealth <= 0) {
-            Death();
+            TriggerEvent(EventType.DEATH);
+            hitBox.enabled = false;
         }
-    }
-
-    private void Death() {
-        TriggerEvent(EventType.DEATH);
-        Destroy(gameObject);
+        else {
+            TriggerEvent(EventType.DAMAGE_TAKEN);
+        }
     }
 }

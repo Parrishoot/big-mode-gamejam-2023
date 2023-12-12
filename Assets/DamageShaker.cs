@@ -8,10 +8,17 @@ public class DamageInvincibilityController: MonoBehaviour
     private HealthController healthController;
 
     [SerializeField]
+    private GameObject parentGameObject;
+
+
+    [SerializeField]
     private Shaker shaker;
 
     [SerializeField]
     private MaterialSwapper materialSwapper;
+
+    [SerializeField]
+    private Spawner gun;
 
     [SerializeField]
     private Material damageMaterial;
@@ -19,17 +26,29 @@ public class DamageInvincibilityController: MonoBehaviour
     [SerializeField]
     private float invincibilityTime = .25f;
 
+    [SerializeField]
+    private float deathAnimationTime = 1f;
+
+    private Timer deathAnimationTimer;
+
     // Start is called before the first frame update
     void Start()
     {
-        healthController.AddOnEventTriggeredEvent(ProcessDamage);
+        healthController.AddOnEventTriggeredEvent(ProcessHit);
     }
 
-    public void ProcessDamage(HealthController.EventType eventType) {
-
-        if(eventType != HealthController.EventType.DAMAGE_TAKEN) {
-            return;
+    void ProcessHit(HealthController.EventType eventType) {
+        switch(eventType) {
+            case HealthController.EventType.DAMAGE_TAKEN:
+                ProcessDamage();
+                break;
+            case HealthController.EventType.DEATH:
+                ProcessDeath();
+                break;
         }
+    }
+
+    public void ProcessDamage() {
 
         healthController.enabled = false;
         materialSwapper.SetAll(damageMaterial);
@@ -38,6 +57,13 @@ public class DamageInvincibilityController: MonoBehaviour
             healthController.enabled = true;
             materialSwapper.RevertAll();
         });
+    }
 
+    public void ProcessDeath() {
+
+        healthController.enabled = false;
+        gun.enabled = false;
+        
+        shaker.Shake(time:deathAnimationTime);
     }
 }

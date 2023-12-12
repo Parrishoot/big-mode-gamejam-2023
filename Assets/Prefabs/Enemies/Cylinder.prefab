@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2207807856957293770}
   - component: {fileID: 6405614959395371950}
   - component: {fileID: 9060325601850757768}
-  - component: {fileID: 7323093905676738826}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -27,13 +26,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5462490992947901372}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.75, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4978995922241843547}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!33 &6405614959395371950
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -41,7 +40,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5462490992947901372}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 2534964839176971238, guid: 23c6815bc19f76d4e8cf10a6ca344210, type: 3}
 --- !u!23 &9060325601850757768
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -84,29 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &7323093905676738826
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5462490992947901372}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1001 &7200637729746089772
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -115,6 +91,36 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 292321185609051980, guid: eec77461ac3eb4c41966a0933360e70c,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 292321185609051980, guid: eec77461ac3eb4c41966a0933360e70c,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 292321185609051980, guid: eec77461ac3eb4c41966a0933360e70c,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 292321185609051980, guid: eec77461ac3eb4c41966a0933360e70c,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 292321185609051980, guid: eec77461ac3eb4c41966a0933360e70c,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 292321185609051980, guid: eec77461ac3eb4c41966a0933360e70c,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 775030728554732954, guid: eec77461ac3eb4c41966a0933360e70c,
         type: 3}
       propertyPath: m_Enabled
@@ -130,10 +136,30 @@ PrefabInstance:
       propertyPath: timeBounds.y
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1205203335270745855, guid: eec77461ac3eb4c41966a0933360e70c,
+        type: 3}
+      propertyPath: m_Height
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1310328348666494806, guid: eec77461ac3eb4c41966a0933360e70c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2807219985173022327, guid: eec77461ac3eb4c41966a0933360e70c,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2807219985173022327, guid: eec77461ac3eb4c41966a0933360e70c,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2807219985173022327, guid: eec77461ac3eb4c41966a0933360e70c,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2807219985173022327, guid: eec77461ac3eb4c41966a0933360e70c,
         type: 3}
@@ -143,7 +169,7 @@ PrefabInstance:
     - target: {fileID: 2807219985173022327, guid: eec77461ac3eb4c41966a0933360e70c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2807219985173022327, guid: eec77461ac3eb4c41966a0933360e70c,
         type: 3}
@@ -213,7 +239,7 @@ PrefabInstance:
     - target: {fileID: 7667410505143919571, guid: eec77461ac3eb4c41966a0933360e70c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7667410505143919571, guid: eec77461ac3eb4c41966a0933360e70c,
         type: 3}
@@ -288,9 +314,12 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 5832583842383736895, guid: eec77461ac3eb4c41966a0933360e70c, type: 3}
     - {fileID: 6419588102360453164, guid: eec77461ac3eb4c41966a0933360e70c, type: 3}
+    - {fileID: 5335718001808411101, guid: eec77461ac3eb4c41966a0933360e70c, type: 3}
     m_RemovedGameObjects:
     - {fileID: 6141555890494138513, guid: eec77461ac3eb4c41966a0933360e70c, type: 3}
     - {fileID: 4850146183258543741, guid: eec77461ac3eb4c41966a0933360e70c, type: 3}
+    - {fileID: 303446268200237393, guid: eec77461ac3eb4c41966a0933360e70c, type: 3}
+    - {fileID: 1098052205760122012, guid: eec77461ac3eb4c41966a0933360e70c, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2807219985173022327, guid: eec77461ac3eb4c41966a0933360e70c,
         type: 3}

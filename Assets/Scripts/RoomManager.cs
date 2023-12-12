@@ -41,7 +41,9 @@ public class RoomManager : ParameterizedEventTrigger<RoomManager.RoomEvent>
     }
 
     private void Init() {
-        
+
+        FloorManager.Instance.SetActiveRoom(this);
+
         if(initialized) {
             return;
         }
@@ -55,12 +57,14 @@ public class RoomManager : ParameterizedEventTrigger<RoomManager.RoomEvent>
 
         initialized = true;
 
-        FloorManager.Instance.SetActiveRoom(this);
-
         TriggerEvent(RoomEvent.ROOM_ENTERED);
     }
 
     private void OnTriggerEnter(Collider other) {
         Init();
+    }
+
+    public bool Discovered() {
+        return initialized;
     }
 }
