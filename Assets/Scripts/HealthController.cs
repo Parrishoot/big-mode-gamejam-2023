@@ -23,6 +23,10 @@ public class HealthController : ParameterizedEventTrigger<HealthController.Event
 
     private void TakeDamage(int damage) {
 
+        if(!enabled) {
+            return;
+        }
+
         totalHealth -= damage;
 
         if(totalHealth <= 0) {

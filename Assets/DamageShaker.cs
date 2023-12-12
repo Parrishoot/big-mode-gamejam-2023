@@ -29,6 +29,9 @@ public class DamageInvincibilityController: MonoBehaviour
     [SerializeField]
     private float deathAnimationTime = 1f;
 
+    [SerializeField]
+    private HitBox hitBox;
+
     private Timer deathAnimationTimer;
 
     // Start is called before the first frame update
