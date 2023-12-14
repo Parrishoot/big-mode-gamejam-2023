@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
-public class FloorBuilder : MonoBehaviour
+public class FloorBuilder : BasicEventTrigger
 {
     [SerializeField]
     private int numberOfRooms = 10;
@@ -30,8 +30,6 @@ public class FloorBuilder : MonoBehaviour
     private Queue<RoomDetails> roomQueue;
 
     private Queue<GameObject> startRoomQueue;
-
-    private Queue<GameObject> endRoomQueue;
 
     private List<RoomResizer> roomResizers;
 
@@ -137,6 +135,8 @@ public class FloorBuilder : MonoBehaviour
         while(!TryCreate()) {
 
         }
+
+        TriggerEvent();
 
         miniMapBuilder.BuildUI(roomCoordinateDetails);
 

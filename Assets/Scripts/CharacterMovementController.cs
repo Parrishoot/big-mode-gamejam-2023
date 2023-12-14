@@ -30,4 +30,8 @@ public class CharacterMovementController : MonoBehaviour
     public void OnDisable() {
         rigidbody.velocity = Vector3.zero;
     }
+
+    public bool IsMoving() {
+        return movementVector != Vector3.zero;
+    }
 }

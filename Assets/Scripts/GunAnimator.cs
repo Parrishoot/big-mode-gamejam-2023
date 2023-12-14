@@ -19,8 +19,9 @@ public class GunAnimator : MonoBehaviour
     private void PlayAnimation() {
 
         DOTween.Sequence()
-               .Append(transform.DOLocalRotate(new Vector3(-recoilAmount, 0, 0), gunController.GetReloadTime() / 5, RotateMode.LocalAxisAdd).SetEase(Ease.OutCubic))
-               .Append(transform.DOLocalRotate(new Vector3(360 + recoilAmount, 0, 0), 4 * (gunController.GetReloadTime() / 5), RotateMode.LocalAxisAdd).SetEase(Ease.InOutCubic))
+               .Append(transform.DOLocalRotate(new Vector3(-recoilAmount, 0, 0),  gunController.GetReloadTime() / 5, RotateMode.LocalAxisAdd).SetEase(Ease.OutCubic))
+               .Append(transform.DOLocalRotate(new Vector3(recoilAmount * 1.1f, 0, 0), 3 * (gunController.GetReloadTime() / 5), RotateMode.LocalAxisAdd).SetEase(Ease.OutCubic))
+               .Append(transform.DOLocalRotate(new Vector3(-recoilAmount * .1f, 0, 0), 2 * (gunController.GetReloadTime() / 5), RotateMode.LocalAxisAdd).SetEase(Ease.OutCubic))
                .OnComplete(() => {
                     transform.localEulerAngles = Vector3.zero;
                })

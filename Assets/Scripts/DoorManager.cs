@@ -80,14 +80,14 @@ public class DoorManager : ParameterizedEventIngester<RoomManager.RoomEvent>
 
     public void PlayOpenAnimation() {
         DOTween.Sequence()
-               .Append(transform.DOMove(transform.position + (Vector3.down * 15), doorAnimationTime).SetEase(Ease.InCubic))
+               .Append(transform.DOMove(transform.position + (Vector3.down * 5.1f), doorAnimationTime).SetEase(Ease.InOutCubic))
                .Play();
         closed = false;
     }
 
     public void PlayCloseAnimation() {
         DOTween.Sequence()
-               .Append(transform.DOMove(transform.position + (Vector3.up * 15), doorAnimationTime).SetEase(Ease.InCubic))
+               .Append(transform.DOMove(transform.position + (Vector3.up * 5.1f), doorAnimationTime).SetEase(Ease.InOutCubic))
                .Play();
         closed = true;
     }

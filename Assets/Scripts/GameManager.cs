@@ -14,12 +14,21 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject playerObject;
 
+    [SerializeField]
+    private bool playIntro = true;
+
     // Start is called before the first frame update
     void Start()
     {
-        introTextController.gameObject.SetActive(true);
-        floorManager.BuildFloor();
-        introTextController.PlayIntro();
-        playerObject.SetActive(true);
+        if(playIntro){
+            introTextController.gameObject.SetActive(true);
+            floorManager.BuildFloor();
+            introTextController.PlayIntro();
+        }
+        else {
+            floorManager.BuildFloor();
+            playerObject.GetComponent<PlayerInputController>().enabled = true;
+        }
+
     }
 }
