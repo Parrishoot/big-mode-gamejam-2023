@@ -487,6 +487,12 @@ MonoBehaviour:
   neighborLayerMask:
     serializedVersion: 2
     m_Bits: 4096
+  doorMaterial: {fileID: 0}
+  wallMaterial: {fileID: 0}
+  rightSide: {fileID: 0}
+  leftSide: {fileID: 0}
+  doorOpenAmount: 0.5
+  doorAnimationTime: 0.3
 --- !u!1 &2496766319920568486
 GameObject:
   m_ObjectHideFlags: 0
@@ -1833,6 +1839,12 @@ MonoBehaviour:
   neighborLayerMask:
     serializedVersion: 2
     m_Bits: 4096
+  doorMaterial: {fileID: 0}
+  wallMaterial: {fileID: 0}
+  rightSide: {fileID: 0}
+  leftSide: {fileID: 0}
+  doorOpenAmount: 0.5
+  doorAnimationTime: 0.3
 --- !u!1 &5013233871236808290
 GameObject:
   m_ObjectHideFlags: 0
@@ -2192,10 +2204,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpawner: {fileID: 490406712317417361}
-  numberOfEnemiesToSpawn: {x: 3, y: 5}
+  numberOfEnemiesToSpawn: {x: 2, y: 4}
   roomCollider: {fileID: 4635290814567809144}
   startingEnemies: []
   spawnRandomizedEnemies: 1
+  roomResizer: {fileID: 6567031161385200049}
 --- !u!114 &6567031161385200049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2574,6 +2587,12 @@ MonoBehaviour:
   neighborLayerMask:
     serializedVersion: 2
     m_Bits: 4096
+  doorMaterial: {fileID: 0}
+  wallMaterial: {fileID: 0}
+  rightSide: {fileID: 0}
+  leftSide: {fileID: 0}
+  doorOpenAmount: 0.5
+  doorAnimationTime: 0.3
 --- !u!1 &8609853569415083276
 GameObject:
   m_ObjectHideFlags: 0
@@ -2696,6 +2715,12 @@ MonoBehaviour:
   neighborLayerMask:
     serializedVersion: 2
     m_Bits: 4096
+  doorMaterial: {fileID: 0}
+  wallMaterial: {fileID: 0}
+  rightSide: {fileID: 0}
+  leftSide: {fileID: 0}
+  doorOpenAmount: 0.5
+  doorAnimationTime: 0.3
 --- !u!1 &8784061781990036884
 GameObject:
   m_ObjectHideFlags: 0

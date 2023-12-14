@@ -25,6 +25,9 @@ public class RoomManager : ParameterizedEventTrigger<RoomManager.RoomEvent>
     [SerializeField]
     private bool spawnRandomizedEnemies = true;
 
+    [SerializeField]
+    private RoomResizer roomResizer;
+
     private int numberOfEnemiesRemaining;
 
     private bool initialized = false;
@@ -61,7 +64,10 @@ public class RoomManager : ParameterizedEventTrigger<RoomManager.RoomEvent>
         }
 
         if(spawnRandomizedEnemies) {
-            numberOfEnemiesRemaining += Random.Range(numberOfEnemiesToSpawn.x, numberOfEnemiesToSpawn.y);
+
+            int roomSize = roomResizer.GetSize().x * roomResizer.GetSize().y;
+
+            numberOfEnemiesRemaining += Random.Range(Mathf.Max(1, numberOfEnemiesToSpawn.x * roomSize / 2), numberOfEnemiesToSpawn.y * roomSize / 2);
 
             for(int i = 0; i < numberOfEnemiesRemaining; i++) {
                 GameObject enemy = enemySpawner.Spawn();

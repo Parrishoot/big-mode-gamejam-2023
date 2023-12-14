@@ -8,6 +8,22 @@ public class DoorManager : ParameterizedEventIngester<RoomManager.RoomEvent>
     [SerializeField]
     private LayerMask neighborLayerMask;
 
+    [SerializeField]
+    private Material doorMaterial;
+
+    [SerializeField]
+    private Material wallMaterial;
+
+    [SerializeField]
+    private GameObject rightSide;
+
+    [SerializeField]
+    private GameObject leftSide;
+
+    [SerializeField]
+    private float doorOpenAmount = .5f;
+
+    [SerializeField]
     private float doorAnimationTime = .3f;
 
     private DoorManager neighbor;
@@ -27,16 +43,32 @@ public class DoorManager : ParameterizedEventIngester<RoomManager.RoomEvent>
     private void FindNeighbor() {
         foreach (Collider collider in Physics.OverlapSphere(transform.position, 5f, neighborLayerMask, QueryTriggerInteraction.Collide))
         {
-            if(collider.gameObject == gameObject) {
+            if(collider.gameObject == leftSide.gameObject || collider.gameObject == rightSide.gameObject) {
                 continue;
             }
 
-            DoorManager neighborDoorManager = collider.gameObject.GetComponent<DoorManager>();
+            DoorManager neighborDoorManager = collider.gameObject.transform.parent.GetComponent<DoorManager>();
 
             if(neighborDoorManager) {
                 neighbor = neighborDoorManager;
             }
         }
+
+        SetDoorVsWall();
+    }
+
+    private void SetDoorVsWall() {
+        if(neighbor == null) {
+            leftSide.GetComponent<MeshRenderer>().material = wallMaterial;
+            rightSide.GetComponent<MeshRenderer>().material = wallMaterial;
+            leftSide.transform.localScale = Vector3.one;
+            rightSide.transform.localScale = Vector3.one;
+        }
+        else {
+            leftSide.GetComponent<MeshRenderer>().material = doorMaterial;
+            rightSide.GetComponent<MeshRenderer>().material = doorMaterial;
+        }
+
     }
 
     protected override void OnEventTrigger(RoomManager.RoomEvent eventParams)
@@ -80,14 +112,16 @@ public class DoorManager : ParameterizedEventIngester<RoomManager.RoomEvent>
 
     public void PlayOpenAnimation() {
         DOTween.Sequence()
-               .Append(transform.DOMove(transform.position + (Vector3.down * 5.1f), doorAnimationTime).SetEase(Ease.InOutCubic))
+               .Append(leftSide.transform.DOScaleX(1 - (doorOpenAmount), doorAnimationTime).SetEase(Ease.InOutCubic))
+               .Join(rightSide.transform.DOScaleX(1 - (doorOpenAmount), doorAnimationTime).SetEase(Ease.InOutCubic))
                .Play();
         closed = false;
     }
 
     public void PlayCloseAnimation() {
         DOTween.Sequence()
-               .Append(transform.DOMove(transform.position + (Vector3.up * 5.1f), doorAnimationTime).SetEase(Ease.InOutCubic))
+               .Append(leftSide.transform.DOScaleX(1, doorAnimationTime).SetEase(Ease.InOutCubic))
+               .Join(rightSide.transform.DOScaleX(1, doorAnimationTime).SetEase(Ease.InOutCubic))
                .Play();
         closed = true;
     }

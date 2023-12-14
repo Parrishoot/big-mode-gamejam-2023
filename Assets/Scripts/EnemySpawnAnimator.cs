@@ -16,12 +16,16 @@ public class EnemySpawnAnimator : ParameterizedEventIngester<HealthController.Ev
     [SerializeField]
     private GameObject parentObject;
 
+    [SerializeField]
+    private AudioSource audioSource;
+
     private Timer animationTimer;
 
     private bool spawning = true;
 
     protected override void Start() {
         animationTimer = new Timer(spawnAnimationTime);
+        audioSource.Play();
         base.Start();
     }
 
