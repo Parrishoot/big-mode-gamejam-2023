@@ -7,10 +7,10 @@ public class MaterialSwapper : MonoBehaviour
 {
     private Dictionary<MeshRenderer, Material> originalMaterials = new Dictionary<MeshRenderer, Material>();
 
-    void Start()
+    void Awake()
     {
-        foreach(MeshRenderer meshRenderer in GetComponentsInChildren<MeshRenderer>()) {
-            originalMaterials.Add(meshRenderer, meshRenderer.material);
+        foreach(MeshRenderer otherMeshRenderer in GetComponentsInChildren<MeshRenderer>()) {
+            originalMaterials.Add(otherMeshRenderer, otherMeshRenderer.material);
         }
     }
 
@@ -29,6 +29,18 @@ public class MaterialSwapper : MonoBehaviour
     public void SetShaderFloatValue(String shaderPropertyName, float value) {
         foreach(MeshRenderer meshRenderer in originalMaterials.Keys) {
             meshRenderer.material.SetFloat(shaderPropertyName, value);
+        }
+    }
+
+    public void SetAllActive() {
+        foreach(MeshRenderer meshRenderer in originalMaterials.Keys) {
+            meshRenderer.gameObject.SetActive(true);
+        }
+    }
+
+    public void SetAllInActive() {
+        foreach(MeshRenderer meshRenderer in originalMaterials.Keys) {
+            meshRenderer.gameObject.SetActive(false);
         }
     }
 }

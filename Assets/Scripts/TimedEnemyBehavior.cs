@@ -7,9 +7,6 @@ public abstract class TimedEnemyBehavior : EnemyBehavior
     [SerializeField]
     private Vector2 timeBounds;
 
-    [SerializeField]
-    private Vector2 cooldownTimeBounds;
-
     private Timer timer;
 
     protected virtual void OnEnable() {

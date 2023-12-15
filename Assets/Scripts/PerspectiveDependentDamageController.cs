@@ -15,7 +15,6 @@ public class PerspectiveDependentDamageController : MonoBehaviour
     void Start()
     {
         CameraPerspectiveSwapper.Instance.AddOnPerspectiveSwitchEvent(CheckEnable);
-        CheckEnable(PerspectiveMode.TOP_DOWN, CameraPerspectiveSwapper.Instance.GetCurrentPerspectiveMode());
     }
 
     private void CheckEnable(PerspectiveMode fromMode, PerspectiveMode toMode) {
@@ -24,5 +23,9 @@ public class PerspectiveDependentDamageController : MonoBehaviour
 
     private void OnDestroy() {
         CameraPerspectiveSwapper.Instance.RemoveOnPerspectiveSwitchEvent(CheckEnable);
+    }
+
+    public void OnEnable() {
+        CheckEnable(PerspectiveMode.TOP_DOWN, CameraPerspectiveSwapper.Instance.GetCurrentPerspectiveMode());
     }
 }

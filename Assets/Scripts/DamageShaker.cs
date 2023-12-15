@@ -29,11 +29,6 @@ public class DamageInvincibilityController: MonoBehaviour
     [SerializeField]
     private float deathAnimationTime = 1f;
 
-    [SerializeField]
-    private HitBox hitBox;
-
-    private Timer deathAnimationTimer;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -65,7 +60,10 @@ public class DamageInvincibilityController: MonoBehaviour
     public void ProcessDeath() {
 
         healthController.enabled = false;
-        gun.enabled = false;
+
+        if(gun != null) {
+            gun.enabled = false;
+        }
         
         shaker.Shake(time:deathAnimationTime);
     }

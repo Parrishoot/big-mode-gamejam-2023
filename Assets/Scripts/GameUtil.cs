@@ -34,4 +34,8 @@ public static class GameUtil
     public static float GetRandomValueFromBounds(Vector2 vector2) {
         return Random.Range(vector2.x, vector2.y);
     }
+
+    public static bool RandomBool() {
+        return Random.Range(0, 100) > 50;
+    }
 }

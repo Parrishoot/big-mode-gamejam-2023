@@ -356,6 +356,7 @@ GameObject:
   - component: {fileID: 1668615358639248541}
   - component: {fileID: 4185415720047222624}
   - component: {fileID: 5316963301209959617}
+  - component: {fileID: 7639407145280685705}
   m_Layer: 0
   m_Name: Meshes
   m_TagString: Untagged
@@ -437,12 +438,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bbb4126f7e3098438a51720cf6f4ff5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventTrigger: {fileID: 2186005350553658292}
   spawnAnimationTime: 0.5
   deathAnimationTime: 0.6
   materialSwapper: {fileID: 1668615358639248541}
+  spawnSound: {fileID: 6649938478684324637}
+  playAnimationOnAwake: 1
+--- !u!114 &7639407145280685705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4243412422956134028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 055ec242b5cca4b46a0eccae693b6dc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventTrigger: {fileID: 2186005350553658292}
+  enemySpawnAnimator: {fileID: 5316963301209959617}
   parentObject: {fileID: 2924268805450987974}
-  audioSource: {fileID: 6649938478684324637}
 --- !u!1 &5771631325045728626
 GameObject:
   m_ObjectHideFlags: 0
@@ -895,6 +910,16 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4015384262754065414, guid: 8519d7df26b3ce04388c6b2265f4bbc5,
+        type: 3}
+      propertyPath: hitBoxes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4015384262754065414, guid: 8519d7df26b3ce04388c6b2265f4bbc5,
+        type: 3}
+      propertyPath: hitBoxes.Array.data[0]
+      value: 
+      objectReference: {fileID: 6891919139615838}
     - target: {fileID: 4131627090977044813, guid: 8519d7df26b3ce04388c6b2265f4bbc5,
         type: 3}
       propertyPath: m_Height

@@ -18,7 +18,7 @@ public class EnemyBehavior : MonoBehaviour
         return priority;
     }
 
-    private void OnDisable() {
+    protected virtual void OnDisable() {
         enemyWaitBehavior?.WaitNext();    
     }
 }

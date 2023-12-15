@@ -16,9 +16,19 @@ public class HitBox: MonoBehaviour
         onHitBoxEnteredEvent += newOnHitBoxEnteredEvent;
     }
 
+    public void RemoveOnHitBoxEnteredEvent(OnHit newOnHitBoxEnteredEvent) {
+        onHitBoxEnteredEvent -= newOnHitBoxEnteredEvent;
+    }
+
+    public void Update() {
+        
+    }
+
     private void OnTriggerEnter(Collider other) {
         
         HurtBox hurtBox = other.GetComponent<HurtBox>();
+
+        Debug.Log("Hit!");
         
         if(hurtBox != null && enabled) {
             onHitBoxEnteredEvent?.Invoke(hurtBox.Damage);

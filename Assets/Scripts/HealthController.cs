@@ -11,14 +11,16 @@ public class HealthController : ParameterizedEventTrigger<HealthController.Event
     }
 
     [SerializeField]
-    private HitBox hitBox;
+    private List<HitBox> hitBoxes;
 
     [SerializeField]
     private int totalHealth = 50;
 
     void Start()
     {
-        hitBox.AddOnHitBoxEnteredEvent(TakeDamage);
+        foreach(HitBox hitBox in hitBoxes) {
+            hitBox.AddOnHitBoxEnteredEvent(TakeDamage);
+        }
     }
 
     private void TakeDamage(int damage) {
@@ -31,7 +33,9 @@ public class HealthController : ParameterizedEventTrigger<HealthController.Event
 
         if(totalHealth <= 0) {
             TriggerEvent(EventType.DEATH);
-            hitBox.enabled = false;
+            foreach(HitBox hitBox in hitBoxes) {
+                hitBox.enabled = false;
+            }
         }
         else {
             TriggerEvent(EventType.DAMAGE_TAKEN);
@@ -40,5 +44,11 @@ public class HealthController : ParameterizedEventTrigger<HealthController.Event
 
     public int GetCurrentHealth() {
         return totalHealth;
+    }
+
+    public void OnDestroy() {
+        foreach(HitBox hitBox in hitBoxes) {
+            hitBox.RemoveOnHitBoxEnteredEvent(TakeDamage);
+        }
     }
 }
