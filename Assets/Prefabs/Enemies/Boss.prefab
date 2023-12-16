@@ -123,8 +123,9 @@ MonoBehaviour:
   spawnAnimationTime: 0.5
   deathAnimationTime: 0.5
   materialSwapper: {fileID: 0}
-  spawnSound: {fileID: 0}
+  spawnSound: {fileID: 6367543361143415374}
   playAnimationOnAwake: 0
+  spawned: 0
 --- !u!114 &2399769850131619054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,7 +178,7 @@ Transform:
   m_GameObject: {fileID: 105183996207079486}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -354,8 +355,9 @@ MonoBehaviour:
   spawnAnimationTime: 0.5
   deathAnimationTime: 0.5
   materialSwapper: {fileID: 0}
-  spawnSound: {fileID: 0}
+  spawnSound: {fileID: 6367543361143415374}
   playAnimationOnAwake: 0
+  spawned: 0
 --- !u!114 &4610830294251903010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -503,8 +505,9 @@ MonoBehaviour:
   spawnAnimationTime: 0.5
   deathAnimationTime: 0.5
   materialSwapper: {fileID: 0}
-  spawnSound: {fileID: 0}
+  spawnSound: {fileID: 6367543361143415374}
   playAnimationOnAwake: 0
+  spawned: 0
 --- !u!114 &8189483252974376991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -575,15 +578,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priority: 2
   enemyWaitBehavior: {fileID: 3262328372538686418}
-  timeBounds: {x: 3, y: 4}
+  canRepeat: 1
+  timeBounds: {x: 2.5, y: 3.5}
   topDownHitBoxObject: {fileID: 105183996207079486}
   firstPersonHitBoxObject: {fileID: 2199911211898524481}
   bossAnimationController: {fileID: 3378041581872505066}
+  bossHealthController: {fileID: 4166155391618926076}
   bottomRow: {fileID: 2521706030428982735}
   middleRow: {fileID: 7862821783987356954}
   topRow: {fileID: 4714406319476874164}
   core: {fileID: 2934790737880312532}
   coreSlideTime: 0.5
+  bossDeathBehavior: {fileID: 167518409396772361}
 --- !u!1 &458957131826351250
 GameObject:
   m_ObjectHideFlags: 0
@@ -707,8 +713,9 @@ MonoBehaviour:
   spawnAnimationTime: 0.5
   deathAnimationTime: 0.5
   materialSwapper: {fileID: 0}
-  spawnSound: {fileID: 0}
+  spawnSound: {fileID: 6367543361143415374}
   playAnimationOnAwake: 0
+  spawned: 0
 --- !u!114 &8617491921068505626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -889,8 +896,9 @@ MonoBehaviour:
   spawnAnimationTime: 0.5
   deathAnimationTime: 0.5
   materialSwapper: {fileID: 0}
-  spawnSound: {fileID: 0}
+  spawnSound: {fileID: 6367543361143415374}
   playAnimationOnAwake: 0
+  spawned: 0
 --- !u!114 &1418790461250270478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1332,8 +1340,9 @@ MonoBehaviour:
   spawnAnimationTime: 0.5
   deathAnimationTime: 0.5
   materialSwapper: {fileID: 0}
-  spawnSound: {fileID: 0}
+  spawnSound: {fileID: 6367543361143415374}
   playAnimationOnAwake: 0
+  spawned: 0
 --- !u!114 &1230188308472948495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1481,8 +1490,9 @@ MonoBehaviour:
   spawnAnimationTime: 0.5
   deathAnimationTime: 0.5
   materialSwapper: {fileID: 0}
-  spawnSound: {fileID: 0}
+  spawnSound: {fileID: 6367543361143415374}
   playAnimationOnAwake: 0
+  spawned: 0
 --- !u!114 &91288268976827221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1535,7 +1545,7 @@ Transform:
   m_GameObject: {fileID: 2199911211898524481}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1635,6 +1645,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priority: 1
   enemyWaitBehavior: {fileID: 3262328372538686418}
+  canRepeat: 0
   bossGunManager: {fileID: 1968714214521186334}
   timeBetweenShots: 0.1
   shootTimePerSide: 5
@@ -1763,8 +1774,9 @@ MonoBehaviour:
   spawnAnimationTime: 0.5
   deathAnimationTime: 0.5
   materialSwapper: {fileID: 0}
-  spawnSound: {fileID: 0}
+  spawnSound: {fileID: 6367543361143415374}
   playAnimationOnAwake: 0
+  spawned: 0
 --- !u!114 &1083254597284654867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1953,8 +1965,9 @@ MonoBehaviour:
   spawnAnimationTime: 0.5
   deathAnimationTime: 0.5
   materialSwapper: {fileID: 0}
-  spawnSound: {fileID: 0}
+  spawnSound: {fileID: 6367543361143415374}
   playAnimationOnAwake: 0
+  spawned: 0
 --- !u!114 &58568255413759854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2102,8 +2115,9 @@ MonoBehaviour:
   spawnAnimationTime: 0.5
   deathAnimationTime: 0.5
   materialSwapper: {fileID: 0}
-  spawnSound: {fileID: 0}
+  spawnSound: {fileID: 6367543361143415374}
   playAnimationOnAwake: 0
+  spawned: 0
 --- !u!114 &6066432955918058062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2379,8 +2393,9 @@ MonoBehaviour:
   spawnAnimationTime: 0.5
   deathAnimationTime: 0.5
   materialSwapper: {fileID: 0}
-  spawnSound: {fileID: 0}
+  spawnSound: {fileID: 6367543361143415374}
   playAnimationOnAwake: 0
+  spawned: 0
 --- !u!114 &2443445229054324111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2528,8 +2543,9 @@ MonoBehaviour:
   spawnAnimationTime: 0.5
   deathAnimationTime: 0.5
   materialSwapper: {fileID: 0}
-  spawnSound: {fileID: 0}
+  spawnSound: {fileID: 6367543361143415374}
   playAnimationOnAwake: 0
+  spawned: 0
 --- !u!114 &8767114885341393942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2677,8 +2693,9 @@ MonoBehaviour:
   spawnAnimationTime: 0.5
   deathAnimationTime: 0.5
   materialSwapper: {fileID: 0}
-  spawnSound: {fileID: 0}
+  spawnSound: {fileID: 6367543361143415374}
   playAnimationOnAwake: 0
+  spawned: 0
 --- !u!114 &1431714724354117547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2861,8 +2878,9 @@ MonoBehaviour:
   spawnAnimationTime: 0.5
   deathAnimationTime: 0.5
   materialSwapper: {fileID: 0}
-  spawnSound: {fileID: 0}
+  spawnSound: {fileID: 6367543361143415374}
   playAnimationOnAwake: 0
+  spawned: 0
 --- !u!114 &6799422599394375470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3010,8 +3028,9 @@ MonoBehaviour:
   spawnAnimationTime: 0.5
   deathAnimationTime: 0.5
   materialSwapper: {fileID: 0}
-  spawnSound: {fileID: 0}
+  spawnSound: {fileID: 6367543361143415374}
   playAnimationOnAwake: 0
+  spawned: 0
 --- !u!114 &2831125310902297304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3159,8 +3178,9 @@ MonoBehaviour:
   spawnAnimationTime: 0.5
   deathAnimationTime: 0.5
   materialSwapper: {fileID: 0}
-  spawnSound: {fileID: 0}
+  spawnSound: {fileID: 6367543361143415374}
   playAnimationOnAwake: 0
+  spawned: 0
 --- !u!114 &4229736982569742473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3308,8 +3328,9 @@ MonoBehaviour:
   spawnAnimationTime: 0.5
   deathAnimationTime: 0.5
   materialSwapper: {fileID: 0}
-  spawnSound: {fileID: 0}
+  spawnSound: {fileID: 6367543361143415374}
   playAnimationOnAwake: 0
+  spawned: 0
 --- !u!114 &998545654639647930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3509,9 +3530,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 415115041213521862}
-  - component: {fileID: 5471903807557776806}
+  - component: {fileID: 167518409396772361}
   m_Layer: 0
-  m_Name: DebugAnimation
+  m_Name: Death
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3532,7 +3553,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4892878459972759510}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5471903807557776806
+--- !u!114 &167518409396772361
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3541,13 +3562,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 4701402941377341672}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 990fd7af66093124c8027d4e70a5f5b9, type: 3}
+  m_Script: {fileID: 11500000, guid: b76086f8df0556d4d8cd7f92c1ae57c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   priority: 1
   enemyWaitBehavior: {fileID: 0}
+  canRepeat: 0
   bossAnimationController: {fileID: 3378041581872505066}
-  delayTime: 1
+  delayTime: 0.3
+  containerShaker: {fileID: 4621350013186907765}
+  bossHealthController: {fileID: 4166155391618926076}
+  spawnAudio: {fileID: 6367543361143415374}
+  deathAudio: {fileID: 8369015679114043641}
 --- !u!1 &4714406319476874164
 GameObject:
   m_ObjectHideFlags: 0
@@ -3711,8 +3737,9 @@ MonoBehaviour:
   spawnAnimationTime: 0.5
   deathAnimationTime: 0.5
   materialSwapper: {fileID: 0}
-  spawnSound: {fileID: 0}
+  spawnSound: {fileID: 6367543361143415374}
   playAnimationOnAwake: 0
+  spawned: 0
 --- !u!114 &1352617601735423554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3860,8 +3887,9 @@ MonoBehaviour:
   spawnAnimationTime: 0.5
   deathAnimationTime: 0.5
   materialSwapper: {fileID: 0}
-  spawnSound: {fileID: 0}
+  spawnSound: {fileID: 6367543361143415374}
   playAnimationOnAwake: 0
+  spawned: 0
 --- !u!114 &393883269367751737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4009,8 +4037,9 @@ MonoBehaviour:
   spawnAnimationTime: 0.5
   deathAnimationTime: 0.5
   materialSwapper: {fileID: 0}
-  spawnSound: {fileID: 0}
+  spawnSound: {fileID: 6367543361143415374}
   playAnimationOnAwake: 0
+  spawned: 0
 --- !u!114 &8264988556864686637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4286,8 +4315,9 @@ MonoBehaviour:
   spawnAnimationTime: 0.5
   deathAnimationTime: 0.5
   materialSwapper: {fileID: 0}
-  spawnSound: {fileID: 0}
+  spawnSound: {fileID: 6367543361143415374}
   playAnimationOnAwake: 0
+  spawned: 0
 --- !u!114 &5108640801838787195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4435,8 +4465,9 @@ MonoBehaviour:
   spawnAnimationTime: 0.5
   deathAnimationTime: 0.5
   materialSwapper: {fileID: 0}
-  spawnSound: {fileID: 0}
+  spawnSound: {fileID: 6367543361143415374}
   playAnimationOnAwake: 0
+  spawned: 0
 --- !u!114 &8741765750183817312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4507,6 +4538,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priority: 1
   enemyWaitBehavior: {fileID: 3262328372538686418}
+  canRepeat: 0
   bossGunManager: {fileID: 1968714214521186334}
   timeBetweenShots: 0.05
   shootTimePerSide: 0.15
@@ -4636,8 +4668,9 @@ MonoBehaviour:
   spawnAnimationTime: 0.5
   deathAnimationTime: 0.5
   materialSwapper: {fileID: 0}
-  spawnSound: {fileID: 0}
+  spawnSound: {fileID: 6367543361143415374}
   playAnimationOnAwake: 0
+  spawned: 0
 --- !u!114 &165828007368072301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4785,8 +4818,9 @@ MonoBehaviour:
   spawnAnimationTime: 0.5
   deathAnimationTime: 0.5
   materialSwapper: {fileID: 0}
-  spawnSound: {fileID: 0}
+  spawnSound: {fileID: 6367543361143415374}
   playAnimationOnAwake: 0
+  spawned: 0
 --- !u!114 &8932042288301984353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4934,8 +4968,9 @@ MonoBehaviour:
   spawnAnimationTime: 0.5
   deathAnimationTime: 0.5
   materialSwapper: {fileID: 0}
-  spawnSound: {fileID: 0}
+  spawnSound: {fileID: 6367543361143415374}
   playAnimationOnAwake: 0
+  spawned: 0
 --- !u!114 &2885155637638954233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5375,6 +5410,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priority: 1
   enemyWaitBehavior: {fileID: 3262328372538686418}
+  canRepeat: 0
   bossGunManager: {fileID: 1968714214521186334}
   timeBetweenShots: 0.1
   shootTimePerSide: 1
@@ -5504,8 +5540,9 @@ MonoBehaviour:
   spawnAnimationTime: 0.5
   deathAnimationTime: 0.5
   materialSwapper: {fileID: 0}
-  spawnSound: {fileID: 0}
+  spawnSound: {fileID: 6367543361143415374}
   playAnimationOnAwake: 0
+  spawned: 0
 --- !u!114 &7852915364819822455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5576,6 +5613,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priority: 1
   enemyWaitBehavior: {fileID: 3262328372538686418}
+  canRepeat: 0
   bossGunManager: {fileID: 1968714214521186334}
   timeBetweenShots: 0.1
   shootTimePerSide: 0.2
@@ -5705,8 +5743,9 @@ MonoBehaviour:
   spawnAnimationTime: 0.5
   deathAnimationTime: 0.5
   materialSwapper: {fileID: 0}
-  spawnSound: {fileID: 0}
+  spawnSound: {fileID: 6367543361143415374}
   playAnimationOnAwake: 0
+  spawned: 0
 --- !u!114 &2942017003185586144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5777,6 +5816,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priority: 1
   enemyWaitBehavior: {fileID: 0}
+  canRepeat: 1
   bossGunManager: {fileID: 1968714214521186334}
   timeBetweenShots: 0.2
   shootTimePerSide: 2
@@ -5992,6 +6032,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priority: 1
   enemyWaitBehavior: {fileID: 0}
+  canRepeat: 0
   timeBetweenLayers: 0.5
   bossAnimationController: {fileID: 3378041581872505066}
 --- !u!1001 &194606305824280997
@@ -6536,12 +6577,12 @@ PrefabInstance:
     - target: {fileID: 775030728554732954, guid: eec77461ac3eb4c41966a0933360e70c,
         type: 3}
       propertyPath: timeBounds.x
-      value: 1
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 775030728554732954, guid: eec77461ac3eb4c41966a0933360e70c,
         type: 3}
       propertyPath: timeBounds.y
-      value: 2
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 1098052205760122012, guid: eec77461ac3eb4c41966a0933360e70c,
         type: 3}
@@ -6557,6 +6598,11 @@ PrefabInstance:
         type: 3}
       propertyPath: hitBox
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2186005350553658292, guid: eec77461ac3eb4c41966a0933360e70c,
+        type: 3}
+      propertyPath: totalHealth
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2186005350553658292, guid: eec77461ac3eb4c41966a0933360e70c,
         type: 3}
@@ -6591,7 +6637,7 @@ PrefabInstance:
     - target: {fileID: 3683197355336494914, guid: eec77461ac3eb4c41966a0933360e70c,
         type: 3}
       propertyPath: enemyBehaviorOptions.Array.size
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3683197355336494914, guid: eec77461ac3eb4c41966a0933360e70c,
         type: 3}
@@ -6628,6 +6674,11 @@ PrefabInstance:
       propertyPath: enemyBehaviorOptions.Array.data[6]
       value: 
       objectReference: {fileID: 5076424441836617643}
+    - target: {fileID: 3683197355336494914, guid: eec77461ac3eb4c41966a0933360e70c,
+        type: 3}
+      propertyPath: enemyBehaviorOptions.Array.data[7]
+      value: 
+      objectReference: {fileID: 167518409396772361}
     - target: {fileID: 5316963301209959617, guid: eec77461ac3eb4c41966a0933360e70c,
         type: 3}
       propertyPath: m_Enabled
@@ -6725,6 +6776,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9048549426325392739, guid: eec77461ac3eb4c41966a0933360e70c,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9048549426325392739, guid: eec77461ac3eb4c41966a0933360e70c,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9048549426325392739, guid: eec77461ac3eb4c41966a0933360e70c,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9048549426325392739, guid: eec77461ac3eb4c41966a0933360e70c,
+        type: 3}
       propertyPath: m_LocalPosition.y
       value: 1.5
       objectReference: {fileID: 0}
@@ -6795,6 +6861,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1968714214521186334}
+    - targetCorrespondingSourceObject: {fileID: 7071775760836353429, guid: eec77461ac3eb4c41966a0933360e70c,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4621350013186907765}
     - targetCorrespondingSourceObject: {fileID: 4243412422956134028, guid: eec77461ac3eb4c41966a0933360e70c,
         type: 3}
       insertIndex: -1
@@ -6803,6 +6873,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 7517121297155833041}
+    - targetCorrespondingSourceObject: {fileID: 1098052205760122012, guid: eec77461ac3eb4c41966a0933360e70c,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4660152212399173183}
+    - targetCorrespondingSourceObject: {fileID: 1098052205760122012, guid: eec77461ac3eb4c41966a0933360e70c,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9087862351613240402}
   m_SourcePrefab: {fileID: 100100000, guid: eec77461ac3eb4c41966a0933360e70c, type: 3}
 --- !u!4 &104242213575286847 stripped
 Transform:
@@ -6869,6 +6947,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateSpeed: {x: 45, y: 0, z: 30}
+--- !u!114 &4660152212399173183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2934790737880312532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bbb4126f7e3098438a51720cf6f4ff5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnAnimationTime: 0.5
+  deathAnimationTime: 0.5
+  materialSwapper: {fileID: 9087862351613240402}
+  spawnSound: {fileID: 6367543361143415374}
+  playAnimationOnAwake: 1
+  spawned: 0
+--- !u!114 &9087862351613240402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2934790737880312532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 145031eb8fa223e4ba6a881b4224f391, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3262328372538686418 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 775030728554732954, guid: eec77461ac3eb4c41966a0933360e70c,
@@ -6879,6 +6987,18 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fe8be0cdf354934baabbb5304fc7c59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4166155391618926076 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2186005350553658292, guid: eec77461ac3eb4c41966a0933360e70c,
+    type: 3}
+  m_PrefabInstance: {fileID: 2848359680023782984}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086070053448032142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be099917452e13d4ab95f72746fc248a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &4892878459972759510 stripped
@@ -6893,6 +7013,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2848359680023782984}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4621350013186907765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5018301496647924701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecd53ba5dc6b74e4aab51928d8dfe0e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &5448485458303085271 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7789961412034792607, guid: eec77461ac3eb4c41966a0933360e70c,

@@ -8,7 +8,10 @@ public class EnemyBehavior : MonoBehaviour
     private int priority = 1;
 
     [SerializeField]
-    private EnemyWaitBehavior enemyWaitBehavior;
+    protected EnemyWaitBehavior enemyWaitBehavior;
+
+    [SerializeField]
+    private bool canRepeat = true;
 
     public virtual bool BehaviorRequired() {
         return false;
@@ -16,6 +19,10 @@ public class EnemyBehavior : MonoBehaviour
 
     public virtual int GetPriority() {
         return priority;
+    }
+
+    public virtual bool CanRepeat() {
+        return canRepeat;
     }
 
     protected virtual void OnDisable() {

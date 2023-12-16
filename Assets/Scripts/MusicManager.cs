@@ -76,4 +76,9 @@ public class MusicManager : MonoBehaviour
 
         musicStarted = true;
     }
+
+    public void Stop() {
+        outOfCombatMusicSource.Stop();
+        inCombatMusicSource.Stop();
+    }
 }

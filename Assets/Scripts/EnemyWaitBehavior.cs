@@ -16,7 +16,7 @@ public class EnemyWaitBehavior : TimedEnemyBehavior
 
     protected override void BehaviorDuringTime()
     {
-        Debug.Log("Waiting!");
+
     }
 
     public void WaitNext() {

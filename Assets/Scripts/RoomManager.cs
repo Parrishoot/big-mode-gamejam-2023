@@ -67,7 +67,11 @@ public class RoomManager : ParameterizedEventTrigger<RoomManager.RoomEvent>
 
             int roomSize = roomResizer.GetSize().x * roomResizer.GetSize().y;
 
-            numberOfEnemiesRemaining += Random.Range(Mathf.Max(1, numberOfEnemiesToSpawn.x * roomSize / 2), numberOfEnemiesToSpawn.y * roomSize / 2);
+            numberOfEnemiesRemaining += Random.Range(Mathf.Max(1, numberOfEnemiesToSpawn.x * roomSize / 2), Mathf.Min(8, numberOfEnemiesToSpawn.y * roomSize / 2));
+
+            if(numberOfEnemiesToSpawn.x == numberOfEnemiesToSpawn.y) {
+                numberOfEnemiesRemaining = numberOfEnemiesToSpawn.x;
+            }
 
             for(int i = 0; i < numberOfEnemiesRemaining; i++) {
                 GameObject enemy = enemySpawner.Spawn();

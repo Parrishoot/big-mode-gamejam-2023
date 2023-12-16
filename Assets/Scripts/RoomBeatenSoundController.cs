@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class RoomBeatenSoundController : ParameterizedEventIngester<RoomManager.RoomEvent>
 {
-    [SerializeField]
-    private AudioSource audioSource;
 
     protected override void OnEventTrigger(RoomManager.RoomEvent roomEvent)
     {
-        if(roomEvent != RoomManager.RoomEvent.ROOM_COMPLETED) {
-            return;
+        if(roomEvent == RoomManager.RoomEvent.ROOM_COMPLETED) {
+            BoomManager.Instance.PlayBoom();
         }
-
-        audioSource.Play();
     }
 }

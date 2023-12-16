@@ -16,6 +16,9 @@ public class BossRevealBehavior : TimedEnemyBehavior
     private BossAnimationController bossAnimationController;
 
     [SerializeField]
+    private HealthController bossHealthController;
+
+    [SerializeField]
     private GameObject bottomRow;
 
     [SerializeField]
@@ -29,6 +32,13 @@ public class BossRevealBehavior : TimedEnemyBehavior
 
     [SerializeField]
     private float coreSlideTime = .5f;
+
+    [SerializeField]
+    private BossDeathBehavior bossDeathBehavior;
+
+    public void Start() {
+        bossHealthController.AddOnEventTriggeredEvent(OnHit);
+    }
 
     protected override void OnEnable()
     {
@@ -77,5 +87,15 @@ public class BossRevealBehavior : TimedEnemyBehavior
 
         bossAnimationController.Spawn();
         core.transform.DOLocalMoveY(middleRow.transform.localPosition.y, coreSlideTime).SetEase(Ease.InOutCubic);
+    }
+
+    public void OnHit(HealthController.EventType eventType) {
+
+        if(eventType == HealthController.EventType.DEATH) {
+            enemyWaitBehavior = null;
+            bossDeathBehavior.SetDead();
+        }
+
+        enabled = false;
     }
 }

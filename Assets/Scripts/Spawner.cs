@@ -59,6 +59,10 @@ public class Spawner : MonoBehaviour
         bounds = newBounds;
     }
 
+    public Vector2 GetBounds() {
+        return bounds;
+    }
+
     private bool CheckWallAtSpawnLocation(Vector3 spawnLocation) {
         return Physics.OverlapSphere(spawnLocation, 5f, wallMask, QueryTriggerInteraction.Collide).Length == 0;
     }

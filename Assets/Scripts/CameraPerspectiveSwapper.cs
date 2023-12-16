@@ -131,9 +131,7 @@ public class CameraPerspectiveSwapper : Singleton<CameraPerspectiveSwapper>
 
         cameraTweener.TweenToPerspectiveMode(nextPerspectiveMode, GetAnimationTime());
 
-        Vector3 nextRotation = new Vector3(nextPerspectiveAnchor.Transform.rotation.eulerAngles.x,
-                                           Mathf.Round(transform.eulerAngles.y / 90) * 90,
-                                           nextPerspectiveAnchor.Transform.rotation.eulerAngles.z);
+        Vector3 nextRotation = GetTargetRotation(nextPerspectiveMode);
 
         activeSequence = DOTween.Sequence();
         activeSequence.Append(transform.DOMove(nextPerspectiveAnchor.Transform.position, perspectiveTransitionTime).SetEase(Ease.InOutCubic));
@@ -186,5 +184,14 @@ public class CameraPerspectiveSwapper : Singleton<CameraPerspectiveSwapper>
 
     public PerspectiveMode GetCurrentPerspectiveMode() {
         return perspectiveAnchors[currentPerspectiveIndex].PerspectiveMode;
+    }
+
+    public Vector3 GetTargetRotation(PerspectiveMode perspectiveMode) {
+
+        PerspectiveAnchor perspectiveAnchor = GetAnchorForPerspective(perspectiveMode);
+
+        return new Vector3(perspectiveAnchor.Transform.rotation.eulerAngles.x,
+                           Mathf.Round(transform.eulerAngles.y / 90) * 90,
+                           perspectiveAnchor.Transform.rotation.eulerAngles.z);
     }
 }

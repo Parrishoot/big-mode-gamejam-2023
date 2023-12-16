@@ -25,14 +25,23 @@ public class IntroTextController : MonoBehaviour
     public void PlayIntro() {
         DOTween.Sequence()
                .PrependInterval(fadeTime)
-               .AppendCallback(() => learnText.gameObject.SetActive(true))
+               .AppendCallback(() => {
+                    BumBumBum.Instance.PlayNextBum();
+                    learnText.gameObject.SetActive(true);
+               })
                .Append(learnText.DOFade(0f, fadeTime).SetEase(Ease.InOutCubic))
-               .AppendCallback(() => adaptText.gameObject.SetActive(true))
+               .AppendCallback(() => {
+                    BumBumBum.Instance.PlayNextBum();
+                    adaptText.gameObject.SetActive(true);
+               })
                .Append(adaptText.DOFade(0f, fadeTime).SetEase(Ease.InOutCubic))
-               .AppendCallback(() => rememberTheMissionText.gameObject.SetActive(true))
+               .AppendCallback(() =>  {
+                    BumBumBum.Instance.PlayNextBum();
+                    rememberTheMissionText.gameObject.SetActive(true);
+                    GameUtil.GetPlayerGameObject().GetComponent<PlayerInputController>().enabled = true;
+               })
                .Append(rememberTheMissionText.DOFade(0f, fadeTime * 2).SetEase(Ease.InOutCubic))
                .Join(background.DOFade(0f, fadeTime).SetEase(Ease.InOutCubic))
-               .Play()
-               .OnComplete(() => GameUtil.GetPlayerGameObject().GetComponent<PlayerInputController>().enabled = true);
+               .Play();
     }
 }

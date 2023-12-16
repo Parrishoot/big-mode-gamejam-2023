@@ -23,6 +23,9 @@ public class FloorBuilder : BasicEventTrigger
     [SerializeField]
     private List<GameObject> startRooms;
 
+    [SerializeField]
+    private List<GameObject> endRooms;
+
     private RoomDetails[,] roomCoordinateDetails;
 
     private List<RoomDetails> roomDetails;
@@ -30,6 +33,8 @@ public class FloorBuilder : BasicEventTrigger
     private Queue<RoomDetails> roomQueue;
 
     private Queue<GameObject> startRoomQueue;
+
+    private Queue<GameObject> endRoomQueue;
 
     private List<RoomResizer> roomResizers;
 
@@ -148,6 +153,7 @@ public class FloorBuilder : BasicEventTrigger
         roomCoordinateDetails = new RoomDetails[numberOfRooms * maxRoomSize * 2, numberOfRooms * maxRoomSize * 2];
         roomQueue = new Queue<RoomDetails>();
         startRoomQueue = new Queue<GameObject>(startRooms);
+        endRoomQueue = new Queue<GameObject>(endRooms);
         roomResizers = new List<RoomResizer>();
         roomDetails = new List<RoomDetails>();
 
@@ -162,6 +168,10 @@ public class FloorBuilder : BasicEventTrigger
 
             if(startRoomQueue.Count > 0) {
                 roomOverride = startRoomQueue.Dequeue();
+                nextRoomSize = roomOverride.GetComponent<RoomResizer>().GetSize();
+            }
+            else if(numberOfRooms - numberOfCreatedRooms <= endRoomQueue.Count) {
+                roomOverride = endRoomQueue.Dequeue();
                 nextRoomSize = roomOverride.GetComponent<RoomResizer>().GetSize();
             }
             else {

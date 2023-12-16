@@ -25,8 +25,8 @@ public class BossAnimationController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        foreach(EnemySpawnAnimator enemySpawnAnimator in GetComponentsInChildren<EnemySpawnAnimator>()) {
-            enemyNodeAnimators.Add(new NodeAnimatorMeta(enemySpawnAnimator, enemySpawnAnimator.gameObject.GetComponent<BossNodeMetaController>()));
+        foreach(BossNodeMetaController nodeInfo in GetComponentsInChildren<BossNodeMetaController>()) {
+            enemyNodeAnimators.Add(new NodeAnimatorMeta(nodeInfo.gameObject.GetComponent<EnemySpawnAnimator>(), nodeInfo));
         }
     }
 

@@ -12,10 +12,6 @@ public class PlayerInputController : MonoBehaviour
     [SerializeField]
     private PlayerGunManager playerGunManager;
 
-    void Start() {
-        Cursor.lockState = CursorLockMode.Locked;
-    }
-
 
     // Update is called once per frame
     void Update()

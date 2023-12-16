@@ -98,7 +98,10 @@ public class RoomResizer : MonoBehaviour
         roomTrigger.size = new Vector3(width, 10f, height);
         roomTrigger.center = center;
 
-        enemySpawner.SetBounds(new Vector3(width, 0, height));
+        if(enemySpawner.GetBounds() != Vector2.zero) {
+            enemySpawner.SetBounds(new Vector3(width, 0, height));
+        }
+
         enemySpawner.transform.parent.gameObject.transform.localPosition = center;
 
         surface.BuildNavMesh();

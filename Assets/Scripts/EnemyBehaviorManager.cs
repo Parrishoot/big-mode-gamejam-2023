@@ -8,6 +8,11 @@ public class EnemyBehaviorManager : MonoBehaviour
     [SerializeField]
     private List<EnemyBehavior> enemyBehaviorOptions;
 
+    [SerializeField]
+    private EnemyBehavior waitBehavior;
+
+    private EnemyBehavior previousBehavior;
+
     EnemyBehavior currentBehavior = null;
 
     // Start is called before the first frame update
@@ -32,6 +37,11 @@ public class EnemyBehaviorManager : MonoBehaviour
             // If we've met the condition where this behavior is required, set that 
             // behavior active
             if(behavior.BehaviorRequired()) {
+
+                if(currentBehavior != waitBehavior) {
+                    previousBehavior = currentBehavior; 
+                }
+
                 currentBehavior = behavior;
                 behavior.enabled = true;
                 return;
@@ -43,7 +53,18 @@ public class EnemyBehaviorManager : MonoBehaviour
             }
         }
 
-        currentBehavior = GameUtil.GetRandomValueFromList(weightedBehaviorList);
+        EnemyBehavior nextSelection;
+
+        do {
+            nextSelection = GameUtil.GetRandomValueFromList(weightedBehaviorList);
+        }
+        while(previousBehavior != null && !previousBehavior.CanRepeat() && previousBehavior == nextSelection);
+
+        if(currentBehavior != waitBehavior) {
+            previousBehavior = currentBehavior; 
+        }
+
+        currentBehavior = nextSelection;
         currentBehavior.enabled = true;
     }
 }

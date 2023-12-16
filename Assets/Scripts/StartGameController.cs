@@ -16,6 +16,7 @@ public class StartGameController : MonoBehaviour
     void Update() {
 
         if(Input.GetKeyDown(KeyCode.Space)) {
+            AudioListenerController.Instance?.SetTarget(0, fadeTime);
             fadeScreen.DOFade(1, fadeTime).OnComplete(() => SceneManager.LoadScene("Game"));
         }
     }

@@ -401,7 +401,6 @@ MonoBehaviour:
   damageMaterial: {fileID: 2100000, guid: 2fe855739864dc442bcf4642a2705b07, type: 2}
   invincibilityTime: 0.25
   deathAnimationTime: 0.25
-  hitBox: {fileID: 0}
 --- !u!114 &1668615358639248541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -443,6 +442,7 @@ MonoBehaviour:
   materialSwapper: {fileID: 1668615358639248541}
   spawnSound: {fileID: 6649938478684324637}
   playAnimationOnAwake: 1
+  spawned: 0
 --- !u!114 &7639407145280685705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -870,6 +870,11 @@ PrefabInstance:
       propertyPath: topDownController
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1941784282494243056, guid: 8519d7df26b3ce04388c6b2265f4bbc5,
+        type: 3}
+      propertyPath: waitBehavior
+      value: 
+      objectReference: {fileID: 775030728554732954}
     - target: {fileID: 2535162281545212456, guid: 8519d7df26b3ce04388c6b2265f4bbc5,
         type: 3}
       propertyPath: timeBounds.x
@@ -909,6 +914,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4015384262754065414, guid: 8519d7df26b3ce04388c6b2265f4bbc5,
+        type: 3}
+      propertyPath: totalHealth
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4015384262754065414, guid: 8519d7df26b3ce04388c6b2265f4bbc5,
         type: 3}
@@ -1078,6 +1088,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 253a39328740b3c4a9d10a3879da8366, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &775030728554732954 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2535162281545212456, guid: 8519d7df26b3ce04388c6b2265f4bbc5,
+    type: 3}
+  m_PrefabInstance: {fileID: 3021848273967972274}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fe8be0cdf354934baabbb5304fc7c59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &2186005350553658292 stripped

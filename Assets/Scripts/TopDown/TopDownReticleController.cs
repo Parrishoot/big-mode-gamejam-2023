@@ -9,6 +9,9 @@ public class TopDownReticleController : PerspectiveDependentController
     [SerializeField]
     private Vector2 mouseSensitivity;
 
+    [SerializeField]
+    private float buffer = 10f;
+
     private Vector3 startingPosition;
 
     
@@ -36,7 +39,10 @@ public class TopDownReticleController : PerspectiveDependentController
     public override void OnTransitionToStart()
     {
         float transitionTime = CameraPerspectiveSwapper.Instance.GetAnimationTime();
-        transform.DORotate(Vector3.forward * 360, transitionTime, RotateMode.FastBeyond360).SetEase(Ease.InOutCubic);
+        DOTween.Sequence()
+               .Append(transform.DOMove(startingPosition + Vector3.up * buffer, transitionTime).SetEase(Ease.InOutCubic))
+               .Join(transform.DORotate(Vector3.forward * 360, transitionTime, RotateMode.FastBeyond360).SetEase(Ease.InOutCubic))
+               .Play();
     }
 
     public override void OnTransitionToEnd()

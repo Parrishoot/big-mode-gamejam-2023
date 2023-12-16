@@ -22,6 +22,7 @@ public class EnemySpawnAnimator : MonoBehaviour
 
     private Timer animationTimer;
 
+    [SerializeField]
     private bool spawned = false;
 
     protected void Start() {
@@ -30,7 +31,9 @@ public class EnemySpawnAnimator : MonoBehaviour
             materialSwapper = GetComponent<MaterialSwapper>();
         }
 
-        materialSwapper.SetShaderFloatValue("_DeathFadePercentage", 0f);
+        if(!spawned) {
+            materialSwapper.SetShaderFloatValue("_DeathFadePercentage", 0f);
+        }
 
         if(playAnimationOnAwake) {
             PlaySpawnAnimation();

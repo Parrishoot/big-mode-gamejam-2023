@@ -23,9 +23,6 @@ public class BossCrossShootBehavior : BossGunBehavior
     };
 
     void OnEnable() {
-
-        Debug.Log("Boss Cross Shot");
-
         BeginTransition();
     }
 

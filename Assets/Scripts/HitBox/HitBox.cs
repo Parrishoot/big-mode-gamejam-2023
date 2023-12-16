@@ -27,8 +27,6 @@ public class HitBox: MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         
         HurtBox hurtBox = other.GetComponent<HurtBox>();
-
-        Debug.Log("Hit!");
         
         if(hurtBox != null && enabled) {
             onHitBoxEnteredEvent?.Invoke(hurtBox.Damage);
